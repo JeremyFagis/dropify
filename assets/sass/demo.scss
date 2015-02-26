@@ -1,0 +1,52 @@
+@import "demo/reset";
+@import "demo/variables";
+@import "demo/helpers/mixins";
+@import "demo/helpers/grid";
+@import "demo/helpers/shortcuts";
+@import "demo/grid";
+@import "demo/typo";
+
+body {
+    background: $background-color;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    color: $text-color;
+
+    &.loading {
+        overflow: hidden;
+    }
+}
+
+header#header {
+    background: $main-color;
+    color: #FFF;
+    font-family: $headings-font-family;
+    font-weight: 200;
+    letter-spacing: $headings-letter-spacing;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 60px;
+    line-height: 60px;
+    padding: 100px 40px 100px 40px;
+    margin: 0 0 30px 0;
+}
+
+footer#footer {
+    background: #DDD;
+    color: #888;
+    padding: 30px 0;
+    margin-top: 30px;
+
+    a {
+        &, &:visited {
+            color: #888;
+        }
+    }
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,29 @@
+{
+  "name": "dropify",
+  "description": "Dropify is a SCSS Framework",
+  "version": "0.0.1",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.githubusercontent.com/JeremyFagis/dropify/master/LICENSE"
+    }
+  ],
+  "homepage": "https://github.com/JeremyFagis/dropify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JeremyFagis/dropify"
+  },
+  "bugs": {
+    "url": "https://github.com/JeremyFagis/dropify/issues"
+  },
+  "author": {
+    "name": "Jeremy FAGIS",
+    "email": "jeremy@fagis.fr"
+  },
+  "devDependencies": {
+    "jquery": "2.1.*",
+    "gulp": "~3.8.11",
+    "del": "0.1.*",
+    "elao-assets-gulp": "~0.1.16"
+  }
+}
