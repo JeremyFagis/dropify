@@ -139,8 +139,8 @@
         },
 
         setSize: function() {
-            if ($(this.element).attr('data-height')) {
-                $(this.element).parent().height($(this.element).attr('data-height'));
+            if (this.settings.height) {
+                this.wrap.height(this.settings.height);
             }
         },
 
