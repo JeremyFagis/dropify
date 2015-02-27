@@ -70,6 +70,11 @@
 
             element.wrap($(this.settings.tpl.wrap));
             this.wrap = element.parent();
+
+            if (this.isTouchDevice() !== true) {
+                this.wrap.addClass('touch-fallback');
+            }
+
             $(this.settings.tpl.message).insertBefore(element);
 
             this.preview = $(this.settings.tpl.preview);
@@ -151,6 +156,12 @@
             if (this.settings.height) {
                 this.wrap.height(this.settings.height);
             }
+        },
+
+        isTouchDevice: function() {
+            return (('ontouchstart' in window)
+                 || (navigator.MaxTouchPoints > 0)
+                 || (navigator.msMaxTouchPoints > 0));
         },
 
         isImage: function() {

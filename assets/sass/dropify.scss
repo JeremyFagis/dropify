@@ -218,6 +218,107 @@ $dropify-stripes:     #F9F9F9 !default;
             }
         }
     }
+
+    &.touch-fallback {
+        height: auto !important;
+
+        .dropify-preview {
+            position: relative;
+            padding: 0;
+
+             .dropify-render {
+                display: block;
+
+                .file-icon {
+                    position: relative;
+                    transform: translate(0, 0);
+                    top: 0;
+                    left: 0;
+
+                    &::before {
+                        margin-top: 30px;
+                        margin-bottom: 30px;
+                    }
+                }
+
+                img {
+                    position: relative;
+                    transform: translate(0, 0);
+                }
+            }
+
+            .dropify-infos {
+                position: relative;
+                opacity: 1;
+                background: transparent;
+
+                .dropify-infos-inner {
+                    position: relative;
+                    top: 0;
+                    transform: translate(0, 0);
+                    padding: 5px 90px 5px 0;
+
+                    p {
+                        padding: 0;
+                        margin: 0;
+                        position: relative;
+                        width: 100%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        color: $dropify-text-color;
+                        text-align: left;
+                        line-height: 25px;
+
+                        &.dropify-filename {
+                            font-weight: bold;
+                        }
+
+                        &.dropify-infos-message {
+                            margin-top: 0;
+                            padding-top: 0;
+                            font-size: 11px;
+                            position: relative;
+                            opacity: 1;
+
+                            &::before {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .dropify-message {
+            transform: translate(0, 0);
+            padding: 40px 0;
+        }
+
+        .dropify-clear {
+            top: auto;
+            bottom: 23px;
+            opacity: 1;
+            border-color: transparentize($dropify-text-color, 0.3);
+            color: $dropify-text-color;
+        }
+
+        &.has-preview {
+            .dropify-message {
+                display: none;
+            }
+        }
+
+        &:hover {
+            .dropify-preview {
+                .dropify-infos {
+                    .dropify-infos-inner {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @keyframes stripes {
