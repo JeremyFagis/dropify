@@ -12,10 +12,6 @@ body {
     font-size: $base-font-size;
     line-height: $base-line-height;
     color: $text-color;
-
-    &.loading {
-        overflow: hidden;
-    }
 }
 
 header#header {

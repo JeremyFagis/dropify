@@ -960,8 +960,6 @@ body {
   font-size: 15px;
   line-height: 27px;
   color: #666; }
-  body.loading {
-    overflow: hidden; }
 
 header#header {
   background: #F34141;
