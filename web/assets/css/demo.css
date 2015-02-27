@@ -463,6 +463,10 @@ hr {
   margin-bottom: 27px;
   border: 0;
   border-top: 1px solid #CCC; }
+  hr.big {
+    border-top: 2px solid #DDD;
+    margin-top: 54px;
+    margin-bottom: 54px; }
 
 .container {
   width: 100%;
@@ -941,7 +945,8 @@ h1 {
     bottom: 0; }
 
 h2 {
-  font-size: 26px; }
+  font-size: 26px;
+  margin-bottom: 20px; }
 
 h3 {
   font-size: 24px; }

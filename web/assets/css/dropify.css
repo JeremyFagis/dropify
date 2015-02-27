@@ -59,6 +59,8 @@
     background-image: linear-gradient(-45deg, #F9F9F9 25%, transparent 25%, transparent 50%, #F9F9F9 50%, #F9F9F9 75%, transparent 75%, transparent);
     -webkit-animation: stripes 2s linear infinite;
             animation: stripes 2s linear infinite; }
+  .dropify-wrapper.has-preview .dropify-clear {
+    display: block; }
   .dropify-wrapper input {
     position: absolute;
     top: 0;
@@ -81,6 +83,24 @@
       color: rgba(0, 0, 0, 0.2); }
     .dropify-wrapper .dropify-message p {
       margin: 5px 0 0 0; }
+  .dropify-wrapper .dropify-clear {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    z-index: 110;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: 2px solid #FFF;
+    text-transform: uppercase;
+    font-family: "Roboto";
+    font-size: 11px;
+    padding: 4px 8px;
+    font-weight: bold;
+    color: #FFF;
+    transition: all 0.15s linear; }
+    .dropify-wrapper .dropify-clear:hover {
+      background: rgba(255, 255, 255, 0.2); }
   .dropify-wrapper .dropify-preview {
     display: none;
     position: absolute;
@@ -130,6 +150,8 @@
         -webkit-transform: translate(0, -40%);
             -ms-transform: translate(0, -40%);
                 transform: translate(0, -40%);
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
         width: 100%;
         padding: 0 20px;
         transition: all 0.2s ease; }
@@ -163,9 +185,11 @@
               background: #FFF;
               width: 30px;
               height: 2px; }
-  .dropify-wrapper input:hover + .dropify-preview .dropify-infos {
+  .dropify-wrapper:hover .dropify-clear {
     opacity: 1; }
-    .dropify-wrapper input:hover + .dropify-preview .dropify-infos .dropify-infos-inner {
+  .dropify-wrapper:hover .dropify-preview .dropify-infos {
+    opacity: 1; }
+    .dropify-wrapper:hover .dropify-preview .dropify-infos .dropify-infos-inner {
       margin-top: -5px; }
 
 @-webkit-keyframes stripes {

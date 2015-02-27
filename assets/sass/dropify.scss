@@ -42,6 +42,12 @@ $dropify-stripes:     #F9F9F9 !default;
         animation: stripes 2s linear infinite;
     }
 
+    &.has-preview {
+        .dropify-clear {
+            display: block;
+        }
+    }
+
     input {
         position: absolute;
         top: 0;
@@ -69,6 +75,28 @@ $dropify-stripes:     #F9F9F9 !default;
 
         p {
             margin: 5px 0 0 0;
+        }
+    }
+
+    .dropify-clear {
+        display: none;
+        position: absolute;
+        opacity: 0;
+        z-index: 110;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: 2px solid #FFF;
+        text-transform: uppercase;
+        font-family: $dropify-font-family;
+        font-size: 11px;
+        padding: 4px 8px;
+        font-weight: bold;
+        color: #FFF;
+        transition: all 0.15s linear;
+
+        &:hover {
+            background: transparentize(#FFF, 0.8);
         }
     }
 
@@ -126,6 +154,7 @@ $dropify-stripes:     #F9F9F9 !default;
                 position: absolute;
                 top: 50%;
                 transform: translate(0, -40%);
+                backface-visibility: hidden;
                 width: 100%;
                 padding: 0 20px;
                 transition: all 0.2s ease;
@@ -174,8 +203,12 @@ $dropify-stripes:     #F9F9F9 !default;
         }
     }
 
-    input:hover {
-        &+.dropify-preview {
+    &:hover {
+        .dropify-clear {
+            opacity: 1;
+        }
+
+        .dropify-preview {
             .dropify-infos {
                 opacity: 1;
 

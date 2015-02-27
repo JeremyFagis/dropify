@@ -47,5 +47,11 @@ hr {
     margin-bottom: $base-line-height;
     border: 0;
     border-top: 1px solid #CCC;
+
+    &.big {
+        border-top: 2px solid #DDD;
+        margin-top: $base-line-height*2;
+        margin-bottom: $base-line-height*2;
+    }
 }
 
