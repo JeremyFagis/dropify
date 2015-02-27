@@ -221,6 +221,11 @@ $dropify-stripes:     #F9F9F9 !default;
 
     &.touch-fallback {
         height: auto !important;
+        
+        &:hover {
+            background-image: none;
+            animation: none;
+        }
 
         .dropify-preview {
             position: relative;

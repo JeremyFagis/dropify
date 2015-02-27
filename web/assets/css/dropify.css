@@ -193,6 +193,10 @@
       margin-top: -5px; }
   .dropify-wrapper.touch-fallback {
     height: auto !important; }
+    .dropify-wrapper.touch-fallback:hover {
+      background-image: none;
+      -webkit-animation: none;
+              animation: none; }
     .dropify-wrapper.touch-fallback .dropify-preview {
       position: relative;
       padding: 0; }
