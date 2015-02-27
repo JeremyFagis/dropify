@@ -71,7 +71,7 @@
             element.wrap($(this.settings.tpl.wrap));
             this.wrap = element.parent();
 
-            if (this.isTouchDevice() !== true) {
+            if (this.isTouchDevice() === true) {
                 this.wrap.addClass('touch-fallback');
             }
 
