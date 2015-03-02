@@ -9,13 +9,13 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define([], factory);
+    define(['jquery'], factory);
   } else if (typeof exports === 'object') {
-    module.exports = factory();
+    module.exports = factory(require('jquery'));
   } else {
-    root.Dropify = factory();
+    root.Dropify = factory(root.$);
   }
-}(this, function() {
+}(this, function($) {
 
 var pluginName = "dropify";
 

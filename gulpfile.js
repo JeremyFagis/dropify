@@ -15,7 +15,20 @@ var jsDir     = 'src/js/',
         ' * (c) 2015 <%= author.name %> <<%= author.email %>> | <%= author.url %>',
         ' * =============================================================',
         ' */\n\n'
-    ].join('\n');
+    ].join('\n'),
+    umdDeps = {
+        dependencies: function() {
+            return [
+                {
+                    name: '$',
+                    amd: 'jquery',
+                    cjs: 'jquery',
+                    global: '$',
+                    param: '$'
+                }
+            ];
+        }
+    };
 
 
 var onError = function (err) {
@@ -48,14 +61,14 @@ gulp.task('sass-prod', function() {
 gulp.task('scripts-dev', function() {
     return gulp.src([jsDir + '*.js'])
         .pipe(gulp.dest(distDir + "/js"))
-        .pipe($.umd())
+        .pipe($.umd(umdDeps))
         .pipe($.header(banner, meta))
         .pipe(gulp.dest(distDir + "/js"));
 });
 gulp.task('scripts-prod', function() {
     return gulp.src([jsDir + '*.js'])
         .pipe(gulp.dest(distDir + "/js"))
-        .pipe($.umd())
+        .pipe($.umd(umdDeps))
         .pipe($.header(banner, meta))
         .pipe($.uglify())
         .pipe(gulp.dest(distDir + "/js"));
