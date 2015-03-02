@@ -13,18 +13,23 @@
 
     var pluginName = "dropify",
         defaults = {
+            messages: {
+                defaultMessage: 'Drag and drop a file here',
+                replaceMessage: 'Drag and drop or click to replace',
+                deleteMessage:  'Remove'
+            },
             tpl: {
-                wrap: '<div class="dropify-wrapper"></div>',
-                message: '<div class="dropify-message"><span class="file-icon" /> <p>Glissez-déposez un fichier ici</p></div>',
-                preview: '<div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message">Glissez-déposez ou cliquez pour remplacer</p></div></div></div>',
-                filename: '<p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p>',
-                clearButton: '<button type="button" class="dropify-clear">Supprimer</button>'
+                wrap:        '<div class="dropify-wrapper"></div>',
+                message:     '<div class="dropify-message"><span class="file-icon" /> <p>defaultMessage</p></div>',
+                preview:     '<div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message">replaceMessage</p></div></div></div>',
+                filename:    '<p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p>',
+                clearButton: '<button type="button" class="dropify-clear">deleteMessage</button>'
             }
         };
 
     function Plugin (element, options) {
         this.element        = element;
-        this.settings       = $.extend({}, defaults, options, $(this.element).data());
+        this.settings       = $.extend(true, defaults, options, $(this.element).data());
         this._defaults      = defaults;
         this._name          = pluginName;
         this.imgFileFormats = ['png', 'jpg', 'jpeg', 'gif', 'bpm'],
@@ -34,6 +39,7 @@
         this.preview        = null,
         this.isIE           = !!window.ActiveXObject;
 
+        this.translate();
         this.init();
     }
 
@@ -162,6 +168,14 @@
             }
 
             return false;
+        },
+
+        translate: function() {
+            for (var name in this.settings.tpl) {
+                for (var key in this.settings.messages) {
+                    this.settings.tpl[name] = this.settings.tpl[name].replace(key, this.settings.messages[key]);
+                }
+            }
         }
 
     };
