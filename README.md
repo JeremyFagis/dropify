@@ -41,4 +41,4 @@ Compile assets
 
 ## NPM Package
 
-Coming soon...
+[www.npmjs.com/package/dropify](https://www.npmjs.com/package/dropify)
