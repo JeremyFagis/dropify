@@ -1,34 +1,71 @@
-var
-    gulp   = require('gulp'),
-    del    = require('del'),
-    assets = require('elao-assets-gulp');
+var gulp = require('gulp'),
+    $    = require('gulp-load-plugins')(),
+    meta = require('./package.json');
 
-/************************/
-/* Assets Configuration */
-/************************/
-
-assets.config({
-    header: [
-        '/*',
+var jsDir     = 'src/js/',
+    sassDir   = 'src/sass/',
+    fontsDir  = 'src/fonts/',
+    distDir   = 'dist',
+    banner    = [
+        '/*!',
         ' * =============================================================',
-        ' * <%= name %>',
+        ' * <%= name %> v<%= version %> | <%= description %>',
+        ' * <%= homepage %>',
         ' *',
-        ' * (c) <%= date.getFullYear() %> <%= author.name %> <<%= author.email %>>',
+        ' * (c) 2015 <%= author.name %> <<%= author.email %>> | <%= author.url %>',
         ' * =============================================================',
         ' */\n\n'
-    ].join('\n'),
-    autoprefixer: {
-        browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
-    }
+    ].join('\n');
+
+
+var onError = function (err) {
+    $.util.beep();
+    console.log(err.toString());
+    this.emit('end');
+};
+
+gulp.task('fonts', function() {
+    return gulp.src(fontsDir + '**/*')
+        .pipe(gulp.dest(distDir + "/fonts"));
 });
 
-/*********/
-/* Tasks */
-/*********/
-
-gulp.task('default', ['install', 'watch']);
-gulp.task('install', ['js', 'sass', 'less', 'css', 'images', 'fonts', 'swf']);
-gulp.task('watch',   ['watch:js', 'watch:sass', 'watch:less', 'watch:css', 'watch:images']);
-gulp.task('clean',   function(cb) {
-    del(assets.getDest() + '/*', cb);
+gulp.task('sass-dev', function() {
+    return gulp.src(sassDir + '*.scss')
+        .pipe($.plumber({ errorHandler: onError }))
+        .pipe($.sass())
+        .pipe($.autoprefixer())
+        .pipe(gulp.dest(distDir + "/css"));
 });
+gulp.task('sass-prod', function() {
+    return gulp.src(sassDir + '*.scss')
+        .pipe($.plumber({ errorHandler: onError }))
+        .pipe($.sass())
+        .pipe($.autoprefixer())
+        .pipe($.minifyCss())
+        .pipe(gulp.dest(distDir + "/css"));
+});
+
+gulp.task('scripts-dev', function() {
+    return gulp.src([jsDir + '*.js'])
+        .pipe(gulp.dest(distDir + "/js"))
+        .pipe($.umd())
+        .pipe($.header(banner, meta))
+        .pipe(gulp.dest(distDir + "/js"));
+});
+gulp.task('scripts-prod', function() {
+    return gulp.src([jsDir + '*.js'])
+        .pipe(gulp.dest(distDir + "/js"))
+        .pipe($.umd())
+        .pipe($.header(banner, meta))
+        .pipe($.uglify())
+        .pipe(gulp.dest(distDir + "/js"));
+});
+
+
+
+gulp.task('watch', ['sass-dev', 'scripts-dev', 'fonts'], function() {
+    gulp.watch(jsDir + '**/*.js', ['scripts-dev']);
+    gulp.watch(sassDir + '**/*.scss', ['sass-dev']);
+});
+gulp.task('default', ['sass-prod', 'scripts-prod', 'fonts']);
+gulp.task('prod',    ['sass-prod', 'scripts-prod', 'fonts']);

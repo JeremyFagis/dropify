@@ -1,29 +1,36 @@
 {
-  "name": "dropify",
-  "description": "Dropify is a SCSS Framework",
-  "version": "0.0.1",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.githubusercontent.com/JeremyFagis/dropify/master/LICENSE"
+    "name": "dropify",
+    "description": "Customize easily your basic HTML input files.",
+    "version": "0.0.1",
+    "homepage": "https://github.com/JeremyFagis/dropify",
+    "author": {
+        "name": "Jeremy FAGIS",
+        "email": "jeremy@fagis.fr",
+        "url": "http://fagis.fr"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/JeremyFagis/dropify"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.githubusercontent.com/JeremyFagis/dropify/master/LICENSE"
+        }
+    ],
+    "bugs": {
+        "url": "https://github.com/JeremyFagis/dropify/issues"
+    },
+    "devDependencies": {
+        "gulp": "~3.8.11",
+        "gulp-load-plugins": "^0.8.1",
+        "gulp-header": "^1.2.2",
+        "gulp-plumber": "^0.6.6",
+        "gulp-minify-css": "^0.5.1",
+        "gulp-sass": "^1.3.3",
+        "gulp-uglify": "^1.1.0",
+        "gulp-util": "^3.0.4",
+        "gulp-autoprefixer": "^2.1.0",
+        "gulp-umd": "^0.1.3"
     }
-  ],
-  "homepage": "https://github.com/JeremyFagis/dropify",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JeremyFagis/dropify"
-  },
-  "bugs": {
-    "url": "https://github.com/JeremyFagis/dropify/issues"
-  },
-  "author": {
-    "name": "Jeremy FAGIS",
-    "email": "jeremy@fagis.fr"
-  },
-  "devDependencies": {
-    "jquery": "2.1.*",
-    "gulp": "~3.8.11",
-    "del": "0.1.*",
-    "elao-assets-gulp": "~0.1.16"
-  }
 }

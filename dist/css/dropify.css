@@ -1,11 +1,3 @@
-/*
- * =============================================================
- * dropify
- *
- * (c) 2015 Jeremy FAGIS <jeremy@fagis.fr>
- * =============================================================
- */
-
 @font-face {
   font-family: 'dropify';
   src: url('../fonts/dropify.eot?57239411');
@@ -21,12 +13,12 @@
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
-  margin-right: 0.2em;
+  margin-right: .2em;
   text-align: center;
   font-variant: normal;
   text-transform: none;
   line-height: 1em;
-  margin-left: 0.2em; }
+  margin-left: .2em; }
 
 .dropify-font-upload:before, .dropify-wrapper .dropify-message span.file-icon:before {
   content: '\e800'; }
@@ -56,6 +48,7 @@
   border: 2px solid #DDD; }
   .dropify-wrapper:hover {
     background-size: 30px 30px;
+    background-image: -webkit-linear-gradient(135deg, #F9F9F9 25%, transparent 25%, transparent 50%, #F9F9F9 50%, #F9F9F9 75%, transparent 75%, transparent);
     background-image: linear-gradient(-45deg, #F9F9F9 25%, transparent 25%, transparent 50%, #F9F9F9 50%, #F9F9F9 75%, transparent 75%, transparent);
     -webkit-animation: stripes 2s linear infinite;
             animation: stripes 2s linear infinite; }
@@ -98,7 +91,8 @@
     padding: 4px 8px;
     font-weight: bold;
     color: #FFF;
-    transition: all 0.15s linear; }
+    -webkit-transition: all 0.15s linear;
+            transition: all 0.15s linear; }
     .dropify-wrapper .dropify-clear:hover {
       background: rgba(255, 255, 255, 0.2); }
   .dropify-wrapper .dropify-preview {
@@ -124,7 +118,8 @@
       max-width: 100%;
       max-height: 100%;
       background-color: #FFF;
-      transition: border-color 0.15s linear; }
+      -webkit-transition: border-color 0.15s linear;
+              transition: border-color 0.15s linear; }
     .dropify-wrapper .dropify-preview .dropify-render .file-icon {
       font-size: 40px;
       top: 50%;
@@ -143,7 +138,8 @@
       z-index: 90;
       background: rgba(0, 0, 0, 0.6);
       opacity: 0;
-      transition: opacity 0.15s linear; }
+      -webkit-transition: opacity 0.15s linear;
+              transition: opacity 0.15s linear; }
       .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner {
         position: absolute;
         top: 50%;
@@ -154,7 +150,8 @@
                 backface-visibility: hidden;
         width: 100%;
         padding: 0 20px;
-        transition: all 0.2s ease; }
+        -webkit-transition: all 0.2s ease;
+                transition: all 0.2s ease; }
         .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p {
           padding: 0;
           margin: 0;
@@ -278,4 +275,3 @@
 
   to {
     background-position: 60px 30px; } }
-
