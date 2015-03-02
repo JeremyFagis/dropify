@@ -63,9 +63,12 @@ gulp.task('scripts-prod', function() {
 
 
 
-gulp.task('watch', ['sass-dev', 'scripts-dev', 'fonts'], function() {
+gulp.task('default', ['sass-prod', 'scripts-prod', 'fonts'], function() {
+    gulp.watch(jsDir + '**/*.js', ['scripts-prod']);
+    gulp.watch(sassDir + '**/*.scss', ['sass-prod']);
+});
+gulp.task('dev', ['sass-dev', 'scripts-dev', 'fonts'], function() {
     gulp.watch(jsDir + '**/*.js', ['scripts-dev']);
     gulp.watch(sassDir + '**/*.scss', ['sass-dev']);
 });
-gulp.task('default', ['sass-prod', 'scripts-prod', 'fonts']);
-gulp.task('prod',    ['sass-prod', 'scripts-prod', 'fonts']);
+gulp.task('install', ['sass-prod', 'scripts-prod', 'fonts']);
