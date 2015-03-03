@@ -26,7 +26,7 @@ function Dropify (element, options) {
     this.filenameElt    = null,
     this.wrap           = null,
     this.preview        = null,
-    this.isIE           = !!window.ActiveXObject;
+    this.isIE           = document.all && !window.atob;;
 
     this.translate();
     this.init();

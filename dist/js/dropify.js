@@ -1,9 +1,9 @@
 /*!
  * =============================================================
- * dropify v0.0.1 | Customize easily your basic HTML input files.
+ * dropify v0.0.2 | Customize easily your basic HTML input files.
  * https://github.com/JeremyFagis/dropify
  *
- * (c) 2015 Jeremy FAGIS <jeremy@fagis.fr> | http://fagis.fr
+ * (c) 2015  <> | 
  * =============================================================
  */
 
@@ -44,7 +44,7 @@ function Dropify (element, options) {
     this.filenameElt    = null,
     this.wrap           = null,
     this.preview        = null,
-    this.isIE           = !!window.ActiveXObject;
+    this.isIE           = document.all && !window.atob;;
 
     this.translate();
     this.init();
