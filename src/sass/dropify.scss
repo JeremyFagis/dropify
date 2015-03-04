@@ -49,6 +49,10 @@ $dropify-stripes:     #F9F9F9 !default;
     }
 
     &.disabled {
+        input {
+            cursor: not-allowed;
+        }
+
         &:hover {
             background-image: none;
             animation: none;
