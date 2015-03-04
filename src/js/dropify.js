@@ -3,7 +3,7 @@ var pluginName = "dropify";
 
 function Dropify (element, options) {
     defaults = {
-        defaultImage: '',
+        defaultFile: '',
         messages: {
             defaultMessage: 'Drag and drop a file here',
             replaceMessage: 'Drag and drop or click to replace',
@@ -26,7 +26,8 @@ function Dropify (element, options) {
     this.filenameElt    = null,
     this.wrap           = null,
     this.preview        = null,
-    this.isIE           = document.all && !window.atob;;
+    this.isIE           = document.all && !window.atob;
+    this.isDisabled     = false;
 
     this.translate();
     this.init();
@@ -52,7 +53,7 @@ Dropify.prototype = {
     createElements: function() {
         var element = $(this.element),
             value = element.val() || '',
-            defaultImage = this.settings.defaultImage || '';
+            defaultFile = this.settings.defaultFile || '';
 
         element.wrap($(this.settings.tpl.wrap));
         this.wrap = element.parent();
@@ -61,28 +62,34 @@ Dropify.prototype = {
             this.wrap.addClass('touch-fallback');
         }
 
+        if (element.attr('disabled')) {
+            this.isDisabled = true;
+            this.wrap.addClass('disabled');
+        }
+
         $(this.settings.tpl.message).insertBefore(element);
 
         this.preview = $(this.settings.tpl.preview);
         this.preview.insertAfter(element);
 
+        if (this.isDisabled === false) {
+            this.clearButton = $(this.settings.tpl.clearButton);
+            this.clearButton.insertAfter(this.element);
 
-        this.clearButton = $(this.settings.tpl.clearButton);
-        this.clearButton.insertAfter(this.element);
-
-        var _this = this;
-        this.clearButton.on('click', function(e){
-            _this.clearElement();
-        });
+            var _this = this;
+            this.clearButton.on('click', function(e){
+                _this.clearElement();
+            });
+        }
 
 
         this.filenameElt = $(this.settings.tpl.filename);
         this.filenameElt.prependTo(this.preview.find('.dropify-infos-inner'));
 
-        if (defaultImage != '') {
-            this.filename = defaultImage;
-            this.setPreview(defaultImage);
-            this.setFilename(this.getFilename(defaultImage));
+        if (defaultFile != '') {
+            this.filename = defaultFile;
+            this.setPreview(defaultFile);
+            this.setFilename(this.getFilename(defaultFile));
         }
     },
 

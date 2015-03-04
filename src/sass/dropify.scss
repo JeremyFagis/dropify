@@ -48,6 +48,21 @@ $dropify-stripes:     #F9F9F9 !default;
         }
     }
 
+    &.disabled {
+        &:hover {
+            background-image: none;
+            animation: none;
+        }
+
+        .dropify-message {
+            opacity: 0.5;
+        }
+
+        .dropify-infos-message {
+            display: none;
+        }
+    }
+
     input {
         position: absolute;
         top: 0;
