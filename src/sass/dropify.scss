@@ -1,5 +1,3 @@
-@import "dropify-font";
-
 $dropify-width:       100% !default;
 $dropify-height:      170px !default;
 $dropify-font-family: "Roboto" !default;
@@ -8,6 +6,9 @@ $dropify-line-height: 22px !default;
 $dropify-text-color:  #777 !default;
 $dropify-background:  #FFF !default;
 $dropify-stripes:     #F9F9F9 !default;
+$dropify-font-path:   "../fonts" !default;
+
+@import "dropify-font";
 
 .dropify-wrapper {
     display: block;
