@@ -78,7 +78,7 @@ $dropify-font-path:   "../fonts" !default;
         width: 100%;
         opacity: 0;
         cursor: pointer;
-        z-index: 100;
+        z-index: 5;
     }
 
     .dropify-message {
@@ -102,7 +102,7 @@ $dropify-font-path:   "../fonts" !default;
         display: none;
         position: absolute;
         opacity: 0;
-        z-index: 110;
+        z-index: 7;
         top: 10px;
         right: 10px;
         background: none;
@@ -123,7 +123,7 @@ $dropify-font-path:   "../fonts" !default;
     .dropify-preview {
         display: none;
         position: absolute;
-        z-index: 50;
+        z-index: 1;
         background-color: $dropify-background;
         padding: 5px;
         width: 100%;
@@ -165,7 +165,7 @@ $dropify-font-path:   "../fonts" !default;
             top: 0;
             right: 0;
             bottom: 0;
-            z-index: 90;
+            z-index: 3;
             background: rgba(0, 0, 0, 0.6);
             opacity: 0;
             transition: opacity 0.15s linear;
