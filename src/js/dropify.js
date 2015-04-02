@@ -86,7 +86,7 @@ Dropify.prototype = {
         this.filenameElt = $(this.settings.tpl.filename);
         this.filenameElt.prependTo(this.preview.find('.dropify-infos-inner'));
 
-        if (defaultFile != '') {
+        if (defaultFile.trim() != '') {
             this.filename = defaultFile;
             this.setPreview(defaultFile);
             this.setFilename(this.getFilename(defaultFile));
