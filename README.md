@@ -8,15 +8,15 @@ Demo here : [http://jeremyfagis.github.io/dropify](http://jeremyfagis.github.io/
 
 ## Dependency
 
-[jQuery](https://github.com/jquery/jquery) is required to do some of the magic.
+[jQuery](https://github.com/jquery/jquery) is required to do the magic.
 
 
 ## Installation
 
 Clone the project in your workspace
 
-	$ git clone git@github.com:JeremyFagis/dropify.git your-project
-	$ cd your-project
+	$ git clone git@github.com:JeremyFagis/dropify.git
+	$ cd dropify
 
 Download packages
 
