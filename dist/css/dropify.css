@@ -48,8 +48,8 @@
   border: 2px solid #E5E5E5; }
   .dropify-wrapper:hover {
     background-size: 30px 30px;
-    background-image: -webkit-linear-gradient(135deg, #F9F9F9 25%, transparent 25%, transparent 50%, #F9F9F9 50%, #F9F9F9 75%, transparent 75%, transparent);
-    background-image: linear-gradient(-45deg, #F9F9F9 25%, transparent 25%, transparent 50%, #F9F9F9 50%, #F9F9F9 75%, transparent 75%, transparent);
+    background-image: -webkit-linear-gradient(135deg, #F6F6F6 25%, transparent 25%, transparent 50%, #F6F6F6 50%, #F6F6F6 75%, transparent 75%, transparent);
+    background-image: linear-gradient(-45deg, #F6F6F6 25%, transparent 25%, transparent 50%, #F6F6F6 50%, #F6F6F6 75%, transparent 75%, transparent);
     -webkit-animation: stripes 2s linear infinite;
             animation: stripes 2s linear infinite; }
   .dropify-wrapper.has-preview .dropify-clear {
