@@ -46,6 +46,8 @@ Compile assets
 
 ## Usage
 
+You have to include [dist/js/dropify.js](dist/js/dropify.js), [dist/css/dropify.css](dist/css/dropify.css) and [dist/fonts/*][dist/fonts/] to your project, then you juste have to init the jQuery plugin like that.
+
 ```javascript
 $('.dropify').dropify();
 ```
