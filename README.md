@@ -29,7 +29,7 @@ Compile assets
 
 ## Compilation
 
-	#  compilation (watch & minification)
+	# All compilations and watch. You will have minified and not minified files.
 	$ gulp
 
 	# Dev compilation (watch & no-minification)
