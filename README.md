@@ -78,7 +78,7 @@ $('.dropify').dropify();
 ```
 
 
-* __messages:__  You can translate default messages. You juste have to add an options array when you init the plugin.
+* __messages:__  You can translate default messages. You juste have to add an options array when you init the plugin. This messages will be replaced in the __tpl__ option.
 
 ```javascript
 $('.dropify').dropify({
