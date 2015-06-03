@@ -36,7 +36,7 @@ Compile assets
 	$ gulp --dev
 
 	# Prod compilation (minification)
-	$ gulp install
+	$ gulp build
 
 
 ## NPM Package
@@ -52,7 +52,7 @@ $('.dropify').dropify();
 
 ## Options
 
-__defaultFile:__ If there is a default file on the input. You can use options when you use the plugin or directly __data-default-file="URL_OF_YOUR_FILE"__ on you DOM element (it's recommended).
+__defaultFile:__ If there is a default file on the input. You can use options when you use the plugin or directly __data-default-file="url_of_your_file"__ on you DOM element (it's recommended).
 
 __height:__  Set the height of your dropify element. For exemple you want 300px height, you have to add the attribute __data-height="300"__ on your DOM element.
 

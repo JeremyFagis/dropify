@@ -69,4 +69,4 @@ gulp.task('default', ['sass', 'scripts', 'fonts'], function() {
     gulp.watch(sassDir + '**/*.scss', ['sass']);
 });
 
-gulp.task('install', ['sass', 'scripts', 'fonts']);
+gulp.task('build', ['sass', 'scripts', 'fonts']);

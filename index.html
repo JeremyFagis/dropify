@@ -44,6 +44,11 @@
                     <br>
                     <label for="input-file-now">Also with a default file</label>
                     <input type="file" id="input-file-now-disabled-2" class="dropify" disabled="disabled" data-default-file="http://www.elao.com/public/images/jobs-animaux.png" />
+                    <br>
+                    <h2>French one</h2>
+                    <label for="input-file-now">"Et voilà"</label>
+                    <input type="file" id="input-file-french" class="dropify-fr" data-default-file=" " />
+                    <br>
                 </div>
             </div>
         </div>
@@ -65,6 +70,13 @@
         <script>
             $(document).ready(function(){
                 $('.dropify').dropify();
+                $('.dropify-fr').dropify({
+                    messages: {
+                        defaultMessage: 'Glissez-déposez un fichier ici ou cliquez',
+                        replaceMessage: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                        removeMessage:  'Supprimer'
+                    }
+                });
             });
         </script>
     </body>
