@@ -6,9 +6,9 @@ Customize easily your basic HTML input files.
 Demo here : [http://jeremyfagis.github.io/dropify](http://jeremyfagis.github.io/dropify/)
 
 
-## Dependencies
+## Dependency
 
-* [jQuery](https://github.com/jquery/jquery) is required to do some of the magic.
+[jQuery](https://github.com/jquery/jquery) is required to do some of the magic.
 
 
 ## Installation
@@ -24,7 +24,7 @@ Download packages
 
 Compile assets
 
-	$ gulp
+	$ gulp build
 
 
 ## Compilation
@@ -52,13 +52,13 @@ $('.dropify').dropify();
 
 ## Options
 
-__defaultFile:__ If there is a default file on the input. You can use options when you use the plugin or directly __data-default-file="url_of_your_file"__ on you DOM element (it's recommended).
+* __defaultFile:__ If there is a default file on the input. You can use options when you use the plugin or directly __data-default-file="url_of_your_file"__ on you DOM element (it's recommended).
 
-__height:__  Set the height of your dropify element. For exemple you want 300px height, you have to add the attribute __data-height="300"__ on your DOM element.
+* __height:__  Set the height of your dropify element. For exemple you want 300px height, you have to add the attribute __data-height="300"__ on your DOM element.
 
-__disabled:__  You can disable the input if you add the attr __disabled="disabled"__.
+* __disabled:__  You can disable the input if you add the attr __disabled="disabled"__.
 
-__messages:__  You can translate default messages. You juste have to add an options array when you init the plugin.
+* __messages:__  You can translate default messages. You juste have to add an options array when you init the plugin.
 
 ```javascript
 messages: {
@@ -68,7 +68,7 @@ messages: {
 }
 ```
 
-__tpl:__  You can update default template. You juste have to add an options array when you init the plugin.
+* __tpl:__  You can update default template. You juste have to add an options array when you init the plugin.
 
 ```javascript
 tpl: {
