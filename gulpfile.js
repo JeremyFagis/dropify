@@ -11,10 +11,10 @@ var jsDir     = 'src/js/',
     banner    = [
         '/*!',
         ' * =============================================================',
-        ' * <%= name %> v<%= version %> | <%= description %>',
+        ' * <%= name %> v<%= version %> — <%= description %>',
         ' * <%= homepage %>',
         ' *',
-        ' * (c) 2015 <%= author.name %> <<%= author.email %>> | <%= author.url %>',
+        ' * (c) 2015 — <%= author %>',
         ' * =============================================================',
         ' */\n\n'
     ].join('\n'),
@@ -32,13 +32,11 @@ var jsDir     = 'src/js/',
         }
     };
 
-
 var onError = function (err) {
     $.util.beep();
     console.log(err.toString());
     this.emit('end');
 };
-
 
 gulp.task('fonts', function() {
     return gulp.src(fontsDir + '**/*')
@@ -50,17 +48,28 @@ gulp.task('sass', function() {
         .pipe($.plumber({ errorHandler: onError }))
         .pipe($.sass())
         .pipe($.autoprefixer())
+
+        .pipe($.header(banner, meta))
+        .pipe(gulp.dest(distDir + "/css"))
+
         .pipe($.if(!argv.dev, $.minifyCss()))
-        .pipe(gulp.dest(distDir + "/css"));
+        .pipe($.if(!argv.dev, $.rename(meta.name + '.min.css')))
+        .pipe($.if(!argv.dev, gulp.dest(distDir + "/css")));
 });
 
 gulp.task('scripts', function() {
     return gulp.src([jsDir + '*.js'])
         .pipe(gulp.dest(distDir + "/js"))
         .pipe($.umd(umdDeps))
+
         .pipe($.header(banner, meta))
+        .pipe($.rename(meta.name + '.js'))
+        .pipe(gulp.dest(distDir + "/js"))
+
         .pipe($.if(!argv.dev, $.uglify()))
-        .pipe(gulp.dest(distDir + "/js"));
+        .pipe($.if(!argv.dev, $.header(banner, meta)))
+        .pipe($.if(!argv.dev, $.rename(meta.name + '.min.js')))
+        .pipe($.if(!argv.dev, gulp.dest(distDir + "/js")));
 });
 
 

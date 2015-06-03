@@ -1,9 +1,9 @@
 /*!
  * =============================================================
- * dropify v0.0.7 | Customize easily your basic HTML input files.
+ * dropify v0.0.7 — Override your input files with style.
  * https://github.com/JeremyFagis/dropify
  *
- * (c) 2015  <> | 
+ * (c) 2015 — Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
  * =============================================================
  */
 
