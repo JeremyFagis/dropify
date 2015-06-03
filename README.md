@@ -35,8 +35,11 @@ Compile assets
 	# Dev compilation (watch & no-minification)
 	$ gulp --dev
 
-	# Prod compilation (minification)
-	$ gulp build
+    # Prod compilation, you will have minified and not minified files
+    $ gulp build
+
+	# Prod compilation, you will have only minified files
+	$ gulp build --dev
 
 
 ## NPM Package
