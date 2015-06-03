@@ -1,7 +1,7 @@
 Dropify
 =========
 
-Customize easily your basic HTML input files.
+Override your input files with style.
 
 Demo here : [http://jeremyfagis.github.io/dropify](http://jeremyfagis.github.io/dropify/)
 
