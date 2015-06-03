@@ -172,7 +172,8 @@
           text-overflow: ellipsis;
           color: #FFF;
           text-align: center;
-          line-height: 25px; }
+          line-height: 25px;
+          font-weight: bold; }
           .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon {
             margin-right: 2px; }
           .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-infos-message {

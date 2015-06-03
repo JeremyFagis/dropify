@@ -196,6 +196,7 @@ $dropify-font-path:        "../fonts" !default;
                     color: $dropify-infos-color;
                     text-align: center;
                     line-height: 25px;
+                    font-weight: bold;
 
                     &.dropify-filename {
                         span.file-icon {
