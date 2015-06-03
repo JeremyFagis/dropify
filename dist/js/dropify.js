@@ -1,6 +1,6 @@
 /*!
  * =============================================================
- * dropify v0.0.6 | Customize easily your basic HTML input files.
+ * dropify v0.0.7 | Customize easily your basic HTML input files.
  * https://github.com/JeremyFagis/dropify
  *
  * (c) 2015  <> | 

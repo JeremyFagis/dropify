@@ -2,6 +2,9 @@ var gulp = require('gulp'),
     $    = require('gulp-load-plugins')(),
     meta = require('./package.json');
 
+var argv = require('minimist')(process.argv.slice(2));
+console.dir(argv);
+
 var jsDir     = 'src/js/',
     sassDir   = 'src/sass/',
     fontsDir  = 'src/fonts/',
@@ -37,51 +40,34 @@ var onError = function (err) {
     this.emit('end');
 };
 
+
 gulp.task('fonts', function() {
     return gulp.src(fontsDir + '**/*')
         .pipe(gulp.dest(distDir + "/fonts"));
 });
 
-gulp.task('sass-dev', function() {
+gulp.task('sass', function() {
     return gulp.src(sassDir + '*.scss')
         .pipe($.plumber({ errorHandler: onError }))
         .pipe($.sass())
         .pipe($.autoprefixer())
-        .pipe(gulp.dest(distDir + "/css"));
-});
-gulp.task('sass-prod', function() {
-    return gulp.src(sassDir + '*.scss')
-        .pipe($.plumber({ errorHandler: onError }))
-        .pipe($.sass())
-        .pipe($.autoprefixer())
-        .pipe($.minifyCss())
+        .pipe($.if(!argv.dev, $.minifyCss()))
         .pipe(gulp.dest(distDir + "/css"));
 });
 
-gulp.task('scripts-dev', function() {
+gulp.task('scripts', function() {
     return gulp.src([jsDir + '*.js'])
         .pipe(gulp.dest(distDir + "/js"))
         .pipe($.umd(umdDeps))
         .pipe($.header(banner, meta))
-        .pipe(gulp.dest(distDir + "/js"));
-});
-gulp.task('scripts-prod', function() {
-    return gulp.src([jsDir + '*.js'])
-        .pipe(gulp.dest(distDir + "/js"))
-        .pipe($.umd(umdDeps))
-        .pipe($.header(banner, meta))
-        .pipe($.uglify())
+        .pipe($.if(!argv.dev, $.uglify()))
         .pipe(gulp.dest(distDir + "/js"));
 });
 
 
+gulp.task('default', ['sass', 'scripts', 'fonts'], function() {
+    gulp.watch(jsDir + '**/*.js', ['scripts']);
+    gulp.watch(sassDir + '**/*.scss', ['sass']);
+});
 
-gulp.task('default', ['sass-prod', 'scripts-prod', 'fonts'], function() {
-    gulp.watch(jsDir + '**/*.js', ['scripts-prod']);
-    gulp.watch(sassDir + '**/*.scss', ['sass-prod']);
-});
-gulp.task('dev', ['sass-dev', 'scripts-dev', 'fonts'], function() {
-    gulp.watch(jsDir + '**/*.js', ['scripts-dev']);
-    gulp.watch(sassDir + '**/*.scss', ['sass-dev']);
-});
-gulp.task('install', ['sass-prod', 'scripts-prod', 'fonts']);
+gulp.task('install', ['sass', 'scripts', 'fonts']);
