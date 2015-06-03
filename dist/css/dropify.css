@@ -45,7 +45,7 @@
   background-color: #FFF;
   background-image: none;
   text-align: center;
-  border: 2px solid #DDD; }
+  border: 2px solid #E5E5E5; }
   .dropify-wrapper:hover {
     background-size: 30px 30px;
     background-image: -webkit-linear-gradient(135deg, #F9F9F9 25%, transparent 25%, transparent 50%, #F9F9F9 50%, #F9F9F9 75%, transparent 75%, transparent);
@@ -83,7 +83,7 @@
             transform: translateY(-50%); }
     .dropify-wrapper .dropify-message span.file-icon {
       font-size: 50px;
-      color: rgba(0, 0, 0, 0.2); }
+      color: #CCC; }
     .dropify-wrapper .dropify-message p {
       margin: 5px 0 0 0; }
   .dropify-wrapper .dropify-clear {
@@ -146,7 +146,7 @@
       right: 0;
       bottom: 0;
       z-index: 3;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       opacity: 0;
       -webkit-transition: opacity 0.15s linear;
               transition: opacity 0.15s linear; }

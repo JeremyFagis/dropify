@@ -3,7 +3,6 @@ var gulp = require('gulp'),
     meta = require('./package.json');
 
 var argv = require('minimist')(process.argv.slice(2));
-console.dir(argv);
 
 var jsDir     = 'src/js/',
     sassDir   = 'src/sass/',

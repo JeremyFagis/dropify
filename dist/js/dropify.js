@@ -16,14 +16,13 @@
     root.Dropify = factory(root.$);
   }
 }(this, function($) {
-
 var pluginName = "dropify";
 
 function Dropify (element, options) {
     defaults = {
         defaultFile: '',
         messages: {
-            defaultMessage: 'Drag and drop a file here',
+            defaultMessage: 'Drag and drop a file here or click',
             replaceMessage: 'Drag and drop or click to replace',
             removeMessage:  'Remove'
         },
