@@ -195,7 +195,7 @@ Dropify.prototype = {
 
 $.fn[ pluginName ] = function ( options ) {
     this.each(function() {
-        if ( !$.data( this, "plugin_" + pluginName ) ) {
+        if (!$.data(this, "plugin_" + pluginName)) {
             $.data( this, "plugin_" + pluginName, new Dropify( this, options ) );
         }
     });

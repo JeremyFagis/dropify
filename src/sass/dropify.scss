@@ -1,18 +1,18 @@
-$dropify-width:       100% !default;
-$dropify-height:      170px !default;
-$dropify-font-family: "Roboto" !default;
-$dropify-font-size:   14px !default;
-$dropify-line-height: 22px !default;
-$dropify-text-color:  #777 !default;
-$dropify-icon-color:  #CCC !default;
-$dropify-background:  #FFF !default;
-$dropify-border-size:  2px !default;
-$dropify-border-color:  #E5E5E5 !default;
+$dropify-width:            100% !default;
+$dropify-height:           170px !default;
+$dropify-font-family:      "Roboto" !default;
+$dropify-font-size:        14px !default;
+$dropify-line-height:      22px !default;
+$dropify-text-color:       #777 !default;
+$dropify-icon-color:       #CCC !default;
+$dropify-background:       #FFF !default;
+$dropify-border-size:      2px !default;
+$dropify-border-color:     #E5E5E5 !default;
 $dropify-infos-background: transparentize(#000, 0.3) !default;
-$dropify-infos-color: #FFF !default;
-$dropify-clear-color: #FFF !default;
-$dropify-stripes:     #F9F9F9 !default;
-$dropify-font-path:   "../fonts" !default;
+$dropify-infos-color:      #FFF !default;
+$dropify-clear-color:      #FFF !default;
+$dropify-stripes:          #F9F9F9 !default;
+$dropify-font-path:        "../fonts" !default;
 
 @import "dropify-font";
 
