@@ -60,21 +60,21 @@ $('.dropify').dropify();
 * __defaultFile:__ If there is a default file on the input. You can use options when you use the plugin or directly __data-default-file="url_of_your_file"__ on you DOM element (it's recommended).
 
 ```html
-<input type="file" data-default-file="url_of_your_file" />
+<input type="file" class="dropify" data-default-file="url_of_your_file" />
 ```
 
 
 * __height:__  Set the height of your dropify element. For exemple you want 300px height, you have to add the attribute __data-height="300"__ on your DOM element.
 
 ```html
-<input type="file" data-height="300" />
+<input type="file" class="dropify" data-height="300" />
 ```
 
 
 * __disabled:__  You can disable the input if you add the attr __disabled="disabled"__.
 
 ```html
-<input type="file" disabled="disabled" />
+<input type="file" class="dropify" disabled="disabled" />
 ```
 
 
