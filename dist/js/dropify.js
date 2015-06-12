@@ -21,17 +21,20 @@ var pluginName = "dropify";
 function Dropify (element, options) {
     defaults = {
         defaultFile: '',
+        maxFileSize: 0,
         messages: {
             defaultMessage: 'Drag and drop a file here or click',
             replaceMessage: 'Drag and drop or click to replace',
-            removeMessage:  'Remove'
+            removeMessage:  'Remove',
+            errorMessage:   'Sorry, this file is too large'
         },
         tpl: {
             wrap:        '<div class="dropify-wrapper"></div>',
             message:     '<div class="dropify-message"><span class="file-icon" /> <p>defaultMessage</p></div>',
             preview:     '<div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message">replaceMessage</p></div></div></div>',
             filename:    '<p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p>',
-            clearButton: '<button type="button" class="dropify-clear">removeMessage</button>'
+            clearButton: '<button type="button" class="dropify-clear">removeMessage</button>',
+            error:       '<p class="dropify-error">errorMessage</p>'
         }
     };
 
@@ -39,12 +42,13 @@ function Dropify (element, options) {
     this.settings       = $.extend(true, defaults, options, $(this.element).data());
     this._name          = pluginName;
     this.imgFileFormats = ['png', 'jpg', 'jpeg', 'gif', 'bpm'],
+    this.file           = null,
     this.filename       = null,
     this.filenameElt    = null,
     this.wrap           = null,
     this.preview        = null,
-    this.isIE           = document.all && !window.atob;
-    this.isDisabled     = false;
+    this.isHTML5        = (window.File && window.FileReader && window.FileList && window.Blob) ? true : false;
+    this.isDisabled     = false,
 
     this.translate();
     this.init();
@@ -52,7 +56,7 @@ function Dropify (element, options) {
 
 Dropify.prototype = {
     init: function () {
-        if (!this.isIE) {
+        if (this.isHTML5) {
             var _this = this;
 
             _this.createElements();
@@ -84,7 +88,9 @@ Dropify.prototype = {
             this.wrap.addClass('disabled');
         }
 
-        $(this.settings.tpl.message).insertBefore(element);
+        var messageWrapper = $(this.settings.tpl.message).insertBefore(element);
+        this.errorElt = $(this.settings.tpl.error);
+        this.errorElt.appendTo(messageWrapper);
 
         this.preview = $(this.settings.tpl.preview);
         this.preview.insertAfter(element);
@@ -98,7 +104,6 @@ Dropify.prototype = {
                 _this.clearElement();
             });
         }
-
 
         this.filenameElt = $(this.settings.tpl.filename);
         this.filenameElt.prependTo(this.preview.find('.dropify-infos-inner'));
@@ -115,16 +120,24 @@ Dropify.prototype = {
             var reader = new FileReader(),
                 _this = this;
 
-            reader.onload = function(e) {
-                _this.setPreview(e.target.result, input.files[0].name);
-            }
+            this.file = input.files[0];
 
-            reader.readAsDataURL(input.files[0]);
+            if (this.checkFileSize()) {
+                reader.onload = function(e) {
+                    _this.setPreview(e.target.result, _this.file.name);
+                }
+
+                reader.readAsDataURL(_this.file);
+            } else {
+                this.wrap.addClass('has-error');
+                this.resetPreview();
+                this.clearElement();
+            }
         }
     },
 
     setPreview: function(src) {
-        this.wrap.addClass('has-preview');
+        this.wrap.removeClass('has-error').addClass('has-preview');
         var render = this.preview.children('.dropify-render');
 
         if (this.isImage() === true) {
@@ -158,6 +171,7 @@ Dropify.prototype = {
     },
 
     clearElement: function() {
+        this.file = null;
         $(this.element).replaceWith($(this.element).val('').clone(true));
         this.resetPreview();
     },
@@ -189,6 +203,35 @@ Dropify.prototype = {
                 this.settings.tpl[name] = this.settings.tpl[name].replace(key, this.settings.messages[key]);
             }
         }
+    },
+
+    checkFileSize: function() {
+        if (this.maxFileSizeToByte() === 0 || this.file.size <= this.maxFileSizeToByte()) {
+            return true;
+        }
+
+        return false;
+    },
+
+    maxFileSizeToByte: function() {
+        var value = 0;
+
+        if (this.settings.maxFileSize !== 0) {
+            var unit  = this.settings.maxFileSize.slice(-1).toUpperCase(),
+                kb    = 1024,
+                mb    = kb * 1024,
+                gb    = mb * 1024;
+
+            if (unit === 'K') {
+                value = parseFloat(this.settings.maxFileSize) * kb;
+            } else if (unit === 'M') {
+                value = parseFloat(this.settings.maxFileSize) * mb;
+            } else if (unit === 'G') {
+                value = parseFloat(this.settings.maxFileSize) * gb;
+            }
+        }
+
+        return value;
     }
 
 };

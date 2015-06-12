@@ -71,6 +71,13 @@ $('.dropify').dropify();
 ```
 
 
+* __maxFileSize:__  Set the max filesize of the uploaded document. An error will be display if the file size is bigger than the option. You can use unit like K, M and G.
+
+```html
+<input type="file" class="dropify" data-max-file-size="3M" />
+```
+
+
 * __disabled:__  You can disable the input if you add the attr __disabled="disabled"__.
 
 ```html
@@ -85,7 +92,9 @@ $('.dropify').dropify({
     messages: {
     	defaultMessage: 'Drag and drop a file here or click',
     	replaceMessage: 'Drag and drop or click to replace',
-    	removeMessage:  'Remove'
+    	removeMessage:  'Remove',
+        errorMessage:   'Sorry, this file is too large'
+
     }
 }
 ```
@@ -100,7 +109,8 @@ $('.dropify').dropify({
         message:     '<div class="dropify-message"><span class="file-icon" /> <p>defaultMessage</p></div>',
         preview:     '<div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message">replaceMessage</p></div></div></div>',
         filename:    '<p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p>',
-        clearButton: '<button type="button" class="dropify-clear">removeMessage</button>'
+        clearButton: '<button type="button" class="dropify-clear">removeMessage</button>',
+        error:       '<p class="dropify-error">errorMessage</p>'
     }
 }
 ```

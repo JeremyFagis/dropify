@@ -11,6 +11,7 @@ $dropify-border-color:     #E5E5E5 !default;
 $dropify-infos-background: transparentize(#000, 0.3) !default;
 $dropify-infos-color:      #FFF !default;
 $dropify-clear-color:      #FFF !default;
+$dropify-error-color:      #F34141 !default;
 $dropify-stripes:          #F6F6F6 !default;
 $dropify-font-path:        "../fonts" !default;
 
@@ -51,6 +52,12 @@ $dropify-font-path:        "../fonts" !default;
 
     &.has-preview {
         .dropify-clear {
+            display: block;
+        }
+    }
+
+    &.has-error {
+        .dropify-message .dropify-error {
             display: block;
         }
     }
@@ -101,6 +108,12 @@ $dropify-font-path:        "../fonts" !default;
 
         p {
             margin: 5px 0 0 0;
+
+            &.dropify-error {
+                color: $dropify-error-color;
+                font-weight: bold;
+                display: none;
+            }
         }
     }
 

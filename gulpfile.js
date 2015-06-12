@@ -59,6 +59,7 @@ gulp.task('sass', function() {
 
 gulp.task('scripts', function() {
     return gulp.src([jsDir + '*.js'])
+        .pipe($.plumber({ errorHandler: onError }))
         .pipe(gulp.dest(distDir + "/js"))
         .pipe($.umd(umdDeps))
 

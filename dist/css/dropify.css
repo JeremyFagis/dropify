@@ -63,6 +63,8 @@
             animation: stripes 2s linear infinite; }
   .dropify-wrapper.has-preview .dropify-clear {
     display: block; }
+  .dropify-wrapper.has-error .dropify-message .dropify-error {
+    display: block; }
   .dropify-wrapper.disabled input {
     cursor: not-allowed; }
   .dropify-wrapper.disabled:hover {
@@ -95,6 +97,10 @@
       color: #CCC; }
     .dropify-wrapper .dropify-message p {
       margin: 5px 0 0 0; }
+      .dropify-wrapper .dropify-message p.dropify-error {
+        color: #F34141;
+        font-weight: bold;
+        display: none; }
   .dropify-wrapper .dropify-clear {
     display: none;
     position: absolute;
