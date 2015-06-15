@@ -166,10 +166,8 @@ $dropify-font-path:        "../fonts" !default;
                 transition: border-color 0.15s linear;
             }
 
-            .file-icon {
-                @extend .dropify-font;
-                @extend .dropify-font-file;
-                font-size: 40px;
+            i {
+                font-size: 70px;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
@@ -214,7 +212,7 @@ $dropify-font-path:        "../fonts" !default;
                     &.dropify-filename {
                         span.file-icon {
                             @extend .dropify-font;
-                            @extend .dropify-font-file;
+                            @extend .dropify-font-empty;
                             margin-right: 2px;
                         }
                     }

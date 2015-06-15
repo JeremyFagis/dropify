@@ -9,12 +9,12 @@
 
 @font-face {
   font-family: 'dropify';
-  src: url('../fonts/dropify.eot?57239411');
-  src: url('../fonts/dropify.eot?57239411#iefix') format('embedded-opentype'), url('../fonts/dropify.woff?57239411') format('woff'), url('../fonts/dropify.ttf?57239411') format('truetype'), url('../fonts/dropify.svg?57239411#dropify') format('svg');
+  src: url('../fonts/dropify.eot');
+  src: url('../fonts/dropify.eot#iefix') format('embedded-opentype'), url('../fonts/dropify.woff') format('woff'), url('../fonts/dropify.ttf') format('truetype'), url('../fonts/dropify.svg#dropify') format('svg');
   font-weight: normal;
   font-style: normal; }
 
-[class^="dropify-font-"]:before, [class*=" dropify-font-"]:before, .dropify-font:before, .dropify-wrapper .dropify-message span.file-icon:before, .dropify-wrapper .dropify-preview .dropify-render .file-icon:before, .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon:before {
+[class^="dropify-font-"]:before, [class*=" dropify-font-"]:before, .dropify-font:before, .dropify-wrapper .dropify-message span.file-icon:before, .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon:before {
   font-family: "dropify";
   font-style: normal;
   font-weight: normal;
@@ -22,21 +22,57 @@
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
+  margin-left: .2em;
   margin-right: .2em;
   text-align: center;
   font-variant: normal;
   text-transform: none;
-  line-height: 1em;
-  margin-left: .2em; }
+  line-height: 1em; }
 
 .dropify-font-upload:before, .dropify-wrapper .dropify-message span.file-icon:before {
   content: '\e800'; }
 
-.dropify-font-picture:before {
+.dropify-font-empty:before, .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon:before {
   content: '\e801'; }
 
-.dropify-font-file:before, .dropify-wrapper .dropify-preview .dropify-render .file-icon:before, .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon:before {
+.dropify-font-ai:before {
   content: '\e802'; }
+
+.dropify-font-doc:before {
+  content: '\e803'; }
+
+.dropify-font-docx:before {
+  content: '\e804'; }
+
+.dropify-font-indd:before {
+  content: '\e805'; }
+
+.dropify-font-md:before {
+  content: '\e806'; }
+
+.dropify-font-pdf:before {
+  content: '\e807'; }
+
+.dropify-font-psd:before {
+  content: '\e808'; }
+
+.dropify-font-rar:before {
+  content: '\e809'; }
+
+.dropify-font-svg:before {
+  content: '\e80a'; }
+
+.dropify-font-txt:before {
+  content: '\e80b'; }
+
+.dropify-font-xls:before {
+  content: '\e80c'; }
+
+.dropify-font-xlsx:before {
+  content: '\e80d'; }
+
+.dropify-font-zip:before {
+  content: '\e80e'; }
 
 .dropify-wrapper {
   display: block;
@@ -145,8 +181,8 @@
       background-color: #FFF;
       -webkit-transition: border-color 0.15s linear;
               transition: border-color 0.15s linear; }
-    .dropify-wrapper .dropify-preview .dropify-render .file-icon {
-      font-size: 40px;
+    .dropify-wrapper .dropify-preview .dropify-render i {
+      font-size: 70px;
       top: 50%;
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
