@@ -32,47 +32,8 @@
 .dropify-font-upload:before, .dropify-wrapper .dropify-message span.file-icon:before {
   content: '\e800'; }
 
-.dropify-font-empty:before, .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon:before {
+.dropify-font-file:before {
   content: '\e801'; }
-
-.dropify-font-ai:before {
-  content: '\e802'; }
-
-.dropify-font-doc:before {
-  content: '\e803'; }
-
-.dropify-font-docx:before {
-  content: '\e804'; }
-
-.dropify-font-indd:before {
-  content: '\e805'; }
-
-.dropify-font-md:before {
-  content: '\e806'; }
-
-.dropify-font-pdf:before {
-  content: '\e807'; }
-
-.dropify-font-psd:before {
-  content: '\e808'; }
-
-.dropify-font-rar:before {
-  content: '\e809'; }
-
-.dropify-font-svg:before {
-  content: '\e80a'; }
-
-.dropify-font-txt:before {
-  content: '\e80b'; }
-
-.dropify-font-xls:before {
-  content: '\e80c'; }
-
-.dropify-font-xlsx:before {
-  content: '\e80d'; }
-
-.dropify-font-zip:before {
-  content: '\e80e'; }
 
 .dropify-wrapper {
   display: block;
@@ -190,6 +151,22 @@
               transform: translate(-50%, -50%);
       position: absolute;
       color: #777; }
+    .dropify-wrapper .dropify-preview .dropify-render .dropify-extension {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+      margin-top: 10px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      font-size: 13px;
+      width: 42px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
     .dropify-wrapper .dropify-preview .dropify-infos {
       position: absolute;
       left: 0;

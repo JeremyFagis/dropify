@@ -26,17 +26,4 @@
 }
 
 .dropify-font-upload:before { content: '\e800'; }
-.dropify-font-empty:before { content: '\e801'; }
-.dropify-font-ai:before { content: '\e802'; }
-.dropify-font-doc:before { content: '\e803'; }
-.dropify-font-docx:before { content: '\e804'; }
-.dropify-font-indd:before { content: '\e805'; }
-.dropify-font-md:before { content: '\e806'; }
-.dropify-font-pdf:before { content: '\e807'; }
-.dropify-font-psd:before { content: '\e808'; }
-.dropify-font-rar:before { content: '\e809'; }
-.dropify-font-svg:before { content: '\e80a'; }
-.dropify-font-txt:before { content: '\e80b'; }
-.dropify-font-xls:before { content: '\e80c'; }
-.dropify-font-xlsx:before { content: '\e80d'; }
-.dropify-font-zip:before { content: '\e80e'; }
+.dropify-font-file:before { content: '\e801'; }

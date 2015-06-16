@@ -42,7 +42,6 @@ function Dropify (element, options) {
     this.settings       = $.extend(true, defaults, options, $(this.element).data());
     this._name          = pluginName;
     this.imgFileFormats = ['png', 'jpg', 'jpeg', 'gif', 'bpm'],
-    this.availableIcons = ['ai', 'doc', 'docx', 'indd', 'md', 'pdf', 'psd', 'rar', 'svg', 'txt', 'xls', 'xlsx', 'zip'],
     this.file           = null,
     this.filename       = null,
     this.filenameElt    = null,
@@ -144,9 +143,8 @@ Dropify.prototype = {
         if (this.isImage() === true) {
             $('<img />').attr('src', src).appendTo(render);
         } else {
-            var ext = this.getFileType();
-            var extension = ($.inArray(ext, this.availableIcons) != "-1") ? ext : 'empty';
-            $('<i />').attr('class', 'dropify-font-' + extension).appendTo(render);
+            $('<i />').attr('class', 'dropify-font-file').appendTo(render);
+            $('<span class="dropify-extension" />').html(this.getFileType()).appendTo(render);
         }
 
         this.preview.fadeIn();
@@ -155,6 +153,7 @@ Dropify.prototype = {
     resetPreview: function() {
         this.wrap.removeClass('has-preview');
         var render = this.preview.children('.dropify-render');
+        render.find('.dropify-extension').remove();
         render.find('i').remove();
         render.find('img').remove();
         this.preview.hide();

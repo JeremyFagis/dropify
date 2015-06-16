@@ -174,6 +174,22 @@ $dropify-font-path:        "../fonts" !default;
                 position: absolute;
                 color: #777;
             }
+
+            .dropify-extension {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                margin-top: 10px;
+                text-transform: uppercase;
+                font-weight: 900;
+                letter-spacing: -0.03em;
+                font-size: 13px;
+                width: 42px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
 
         .dropify-infos {
