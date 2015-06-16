@@ -73,7 +73,6 @@ Dropify.prototype = {
 
     createElements: function() {
         var element = $(this.element),
-            value = element.val() || '',
             defaultFile = this.settings.defaultFile || '';
 
         element.wrap($(this.settings.tpl.wrap));
