@@ -69,7 +69,8 @@
     -webkit-animation: none;
             animation: none; }
   .dropify-wrapper.disabled .dropify-message {
-    opacity: 0.5; }
+    opacity: 0.5;
+    text-decoration: line-through; }
   .dropify-wrapper.disabled .dropify-infos-message {
     display: none; }
   .dropify-wrapper input {

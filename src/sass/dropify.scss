@@ -74,6 +74,7 @@ $dropify-font-path:        "../fonts" !default;
 
         .dropify-message {
             opacity: 0.5;
+            text-decoration: line-through;
         }
 
         .dropify-infos-message {
