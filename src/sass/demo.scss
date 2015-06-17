@@ -16,16 +16,30 @@ body {
 
 header#header {
     background: $main-color;
-    color: #FFF;
+    color: #FFD270;
     font-family: $headings-font-family;
-    font-weight: 200;
+    font-weight: 700;
     letter-spacing: $headings-letter-spacing;
-    text-transform: uppercase;
     text-align: center;
-    font-size: 60px;
+    font-size: 70px;
     line-height: 60px;
-    padding: 100px 40px 100px 40px;
+    padding: 50px 30px;
     margin: 0 0 30px 0;
+
+    h1 {
+        color: #FFD270;
+        font-size: 70px;
+        line-height: 90px;
+        font-weight: 700;
+
+        &::after {
+            background: transparentize(#FFD270, 0.25);
+        }
+    }
+
+    h2 {
+        color: transparentize(#FFD270, 0.5);
+    }
 }
 
 footer#footer {
@@ -50,3 +64,21 @@ label {
 p.help {
     color: #999;
 }
+
+@media (max-width: 480px) {
+    header#header {
+        padding: 30px 15px;
+
+        h1 {
+            font-size: 44px;
+            line-height: 70px;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+    }
+}
+

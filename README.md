@@ -1,3 +1,5 @@
+![Dropify](dist/images/cover.jpg)
+
 Dropify
 =========
 

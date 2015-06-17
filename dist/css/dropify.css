@@ -1,9 +1,9 @@
 /*!
  * =============================================================
- * dropify v0.0.7 — Override your input files with style.
+ * dropify v0.0.7 - Override your input files with style.
  * https://github.com/JeremyFagis/dropify
  *
- * (c) 2015 — Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
+ * (c) 2015 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
  * =============================================================
  */
 
@@ -238,15 +238,16 @@
       position: relative;
       padding: 0; }
       .dropify-wrapper.touch-fallback .dropify-preview .dropify-render {
-        display: block; }
-        .dropify-wrapper.touch-fallback .dropify-preview .dropify-render .file-icon {
+        display: block;
+        position: relative; }
+        .dropify-wrapper.touch-fallback .dropify-preview .dropify-render .dropify-font-file {
           position: relative;
           -webkit-transform: translate(0, 0);
               -ms-transform: translate(0, 0);
                   transform: translate(0, 0);
           top: 0;
           left: 0; }
-          .dropify-wrapper.touch-fallback .dropify-preview .dropify-render .file-icon::before {
+          .dropify-wrapper.touch-fallback .dropify-preview .dropify-render .dropify-font-file::before {
             margin-top: 30px;
             margin-bottom: 30px; }
         .dropify-wrapper.touch-fallback .dropify-preview .dropify-render img {

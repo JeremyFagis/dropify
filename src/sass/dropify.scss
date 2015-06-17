@@ -288,8 +288,9 @@ $dropify-font-path:        "../fonts" !default;
 
              .dropify-render {
                 display: block;
+                position: relative;
 
-                .file-icon {
+                .dropify-font-file {
                     position: relative;
                     transform: translate(0, 0);
                     top: 0;

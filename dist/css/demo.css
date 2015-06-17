@@ -1,9 +1,9 @@
 /*!
  * =============================================================
- * dropify v0.0.7 — Override your input files with style.
+ * dropify v0.0.7 - Override your input files with style.
  * https://github.com/JeremyFagis/dropify
  *
- * (c) 2015 — Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
+ * (c) 2015 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
  * =============================================================
  */
 
@@ -930,15 +930,15 @@ h1 {
   font-size: 30px;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   position: relative;
   padding: 0 0 20px 0; }
   h1::after {
     content: '';
     position: absolute;
-    width: 30px;
+    width: 60px;
     height: 3px;
-    background-color: #666;
+    background-color: #444;
     left: 50%;
     -webkit-transform: translateX(-50%);
         -ms-transform: translateX(-50%);
@@ -963,17 +963,25 @@ body {
   color: #666; }
 
 header#header {
-  background: #F34141;
-  color: #FFF;
+  background: #1C252C;
+  color: #FFD270;
   font-family: "Roboto Condensed", "Helvetica Neue", "Helvetica";
-  font-weight: 200;
+  font-weight: 700;
   letter-spacing: -0.04em;
-  text-transform: uppercase;
   text-align: center;
-  font-size: 60px;
+  font-size: 70px;
   line-height: 60px;
-  padding: 100px 40px 100px 40px;
+  padding: 50px 30px;
   margin: 0 0 30px 0; }
+  header#header h1 {
+    color: #FFD270;
+    font-size: 70px;
+    line-height: 90px;
+    font-weight: 700; }
+    header#header h1::after {
+      background: rgba(255, 210, 112, 0.75); }
+  header#header h2 {
+    color: rgba(255, 210, 112, 0.5); }
 
 footer#footer {
   background: #DDD;
@@ -990,3 +998,14 @@ label {
 
 p.help {
   color: #999; }
+
+@media (max-width: 480px) {
+  header#header {
+    padding: 30px 15px; }
+    header#header h1 {
+      font-size: 44px;
+      line-height: 70px;
+      padding-bottom: 15px;
+      margin-bottom: 15px; }
+    header#header h2 {
+      font-size: 20px; } }

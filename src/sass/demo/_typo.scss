@@ -42,16 +42,16 @@ h1 {
     font-size: $font-size-h1;
     text-transform: $headings-text-transform;
     text-align: center;
-    margin-bottom: $headings-margin;
+    margin-bottom: 25px;
     position: relative;
     padding: 0 0 20px 0;
 
     &::after {
         content: '';
         position: absolute;
-        width: 30px;
+        width: 60px;
         height: 3px;
-        background-color: #666;
+        background-color: $headings-color;
         left: 50%;
         transform: translateX(-50%);
         bottom: 0;

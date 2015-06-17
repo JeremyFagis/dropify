@@ -47,27 +47,19 @@ function Dropify(element, options) {
 Dropify.prototype.onChange = function()
 {
     this.resetPreview();
-    console.log("this.input", this.input.val());
-    // this.input.replaceWith(this.input.val('').clone(true));
-    // console.log("this.input", this.input.val());
-
-    // console.log('#input-file-now', $('#input-file-now').val());
-    // $('#input-file-now').val('');
-    // console.log('#input-file-now', $('#input-file-now').val());
-
-    console.log('----------');
     this.setFilename(this.input.val());
     this.readUrl(this.element);
 };
 
 Dropify.prototype.createElements = function()
 {
-    var defaultFile = this.settings.defaultFile || '';
-
     this.input.wrap($(this.settings.tpl.wrap));
     this.wrapper = this.input.parent();
 
-    if (this.isTouchDevice() === true) {
+    var messageWrapper = $(this.settings.tpl.message).insertBefore(this.input);
+    $(this.settings.tpl.error).appendTo(messageWrapper);
+
+    if (this.isTouchDevice() === false) {
         this.wrapper.addClass('touch-fallback');
     }
 
@@ -76,23 +68,22 @@ Dropify.prototype.createElements = function()
         this.wrapper.addClass('disabled');
     }
 
-    var messageWrapper = $(this.settings.tpl.message).insertBefore(this.input);
-    this.errorElt = $(this.settings.tpl.error);
-    this.errorElt.appendTo(messageWrapper);
-
     this.preview = $(this.settings.tpl.preview);
     this.preview.insertAfter(this.input);
 
     if (this.isDisabled === false) {
         this.clearButton = $(this.settings.tpl.clearButton);
         this.clearButton.insertAfter(this.input);
-        this.clearButton.on('click', function(e){
+
+        this.clearButton.on('click', function(){
             this.clearElement();
         }.bind(this));
     }
 
     this.filenameWrapper = $(this.settings.tpl.filename);
     this.filenameWrapper.prependTo(this.preview.find('.dropify-infos-inner'));
+
+    var defaultFile = this.settings.defaultFile || '';
 
     if (defaultFile.trim() != '') {
         this.setFilename(defaultFile);
@@ -165,7 +156,7 @@ Dropify.prototype.setFilename = function(filename)
 Dropify.prototype.clearElement = function()
 {
     this.file = null;
-    this.input.replaceWith(this.input.val('').clone(true));
+    this.input.val('');
     this.resetPreview();
 };
 
