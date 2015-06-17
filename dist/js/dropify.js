@@ -1,6 +1,6 @@
 /*!
  * =============================================================
- * dropify v0.1.0 - Override your input files with style.
+ * dropify v0.1.1 - Override your input files with style.
  * https://github.com/JeremyFagis/dropify
  *
  * (c) 2015 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
@@ -77,7 +77,7 @@ Dropify.prototype.createElements = function()
     var messageWrapper = $(this.settings.tpl.message).insertBefore(this.input);
     $(this.settings.tpl.error).appendTo(messageWrapper);
 
-    if (this.isTouchDevice() === false) {
+    if (this.isTouchDevice() === true) {
         this.wrapper.addClass('touch-fallback');
     }
 
