@@ -1,7 +1,7 @@
 {
   "name": "dropify",
   "description": "Override your input files with style.",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "homepage": "https://github.com/JeremyFagis/dropify",
   "author": "Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)",
   "repository": {
