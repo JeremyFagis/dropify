@@ -1,23 +1,22 @@
 {
   "name": "dropify",
   "description": "Override your input files with style.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/JeremyFagis/dropify",
   "author": "Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)",
   "repository": {
     "type": "git",
     "url": "https://github.com/JeremyFagis/dropify"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.githubusercontent.com/JeremyFagis/dropify/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/JeremyFagis/dropify/issues"
   },
+  "main": "dist/js/dropify.js",
   "dependencies": {
+    "jquery": "*"
+  },
+  "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.1.0",
     "gulp-header": "^1.2.2",

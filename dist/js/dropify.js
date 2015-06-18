@@ -1,6 +1,6 @@
 /*!
  * =============================================================
- * dropify v0.1.1 - Override your input files with style.
+ * dropify v0.1.2 - Override your input files with style.
  * https://github.com/JeremyFagis/dropify
  *
  * (c) 2015 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
@@ -27,18 +27,18 @@ function Dropify(element, options) {
         defaultFile: '',
         maxFileSize: 0,
         messages: {
-            defaultMessage: 'Drag and drop a file here or click',
-            replaceMessage: 'Drag and drop or click to replace',
-            removeMessage:  'Remove',
-            errorMessage:   'Sorry, this file is too large'
+            'default': 'Drag and drop a file here or click',
+            'replace': 'Drag and drop or click to replace',
+            'remove':  'Remove',
+            'error':   'Sorry, this file is too large'
         },
         tpl: {
             wrap:        '<div class="dropify-wrapper"></div>',
-            message:     '<div class="dropify-message"><span class="file-icon" /> <p>defaultMessage</p></div>',
-            preview:     '<div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message">replaceMessage</p></div></div></div>',
+            message:     '<div class="dropify-message"><span class="file-icon" /> <p>{{ default }}</p></div>',
+            preview:     '<div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message">{{ replace }}</p></div></div></div>',
             filename:    '<p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p>',
-            clearButton: '<button type="button" class="dropify-clear">removeMessage</button>',
-            error:       '<p class="dropify-error">errorMessage</p>'
+            clearButton: '<button type="button" class="dropify-clear">{{ remove }}</button>',
+            error:       '<p class="dropify-error">{{ error }}</p>'
         }
     };
 
@@ -210,7 +210,7 @@ Dropify.prototype.translate = function()
 {
     for (var name in this.settings.tpl) {
         for (var key in this.settings.messages) {
-            this.settings.tpl[name] = this.settings.tpl[name].replace(key, this.settings.messages[key]);
+            this.settings.tpl[name] = this.settings.tpl[name].replace('{{ ' + key + ' }}', this.settings.messages[key]);
         }
     }
 };
