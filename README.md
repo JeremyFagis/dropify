@@ -87,6 +87,13 @@ $('.dropify').dropify();
 ```
 
 
+* __disableRemove:__  You can disable the remove button if you add the attr __data-disable-remove="true"__.
+
+```html
+<input type="file" class="dropify" data-disable-remove="true" />
+```
+
+
 * __messages:__  You can translate default messages. You juste have to add an options array when you init the plugin. This messages will be replaced in the __tpl__ option.
 
 ```javascript
