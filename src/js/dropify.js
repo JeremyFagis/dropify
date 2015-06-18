@@ -71,7 +71,7 @@ Dropify.prototype.createElements = function()
     this.preview = $(this.settings.tpl.preview);
     this.preview.insertAfter(this.input);
 
-    if (this.isDisabled === false) {
+    if (this.isDisabled === false && this.settings.disableRemove !== true) {
         this.clearButton = $(this.settings.tpl.clearButton);
         this.clearButton.insertAfter(this.input);
 
