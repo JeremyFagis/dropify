@@ -53,7 +53,8 @@ function Dropify(element, options) {
     this.filename        = null;
     this.isDisabled      = false;
 
-    this.onChange = this.onChange.bind(this);
+    this.onChange     = this.onChange.bind(this);
+    this.clearElement = this.clearElement.bind(this);
 
     this.translate();
     this.createElements();
@@ -92,10 +93,7 @@ Dropify.prototype.createElements = function()
     if (this.isDisabled === false && this.settings.disableRemove !== true) {
         this.clearButton = $(this.settings.tpl.clearButton);
         this.clearButton.insertAfter(this.input);
-
-        this.clearButton.on('click', function(){
-            this.clearElement();
-        }.bind(this));
+        this.clearButton.on('click', this.clearElement);
     }
 
     this.filenameWrapper = $(this.settings.tpl.filename);
