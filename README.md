@@ -133,7 +133,7 @@ $('.dropify').dropify({
 var drEvent = $('.dropify').dropify();
 
 drEvent.on('dropify.beforeClear', function(event, element){
-    return confirm("Do you realy want to delete \"" + element.filename + "\" ?");
+    return confirm("Do you really want to delete \"" + element.filename + "\" ?");
 });
 ```
 
