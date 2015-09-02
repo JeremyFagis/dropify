@@ -127,7 +127,7 @@ $('.dropify').dropify({
 
 ## Events
 
-* __dropify.beforeClear:__  This event is called when you click on the "remove" button, just before clearing the Dropify. You can access to all the Dropify object properties using __element.xxxx__. See how use it.
+* __dropify.beforeClear:__  This event is called when you click on the "remove" button, just before clearing the Dropify. You can access to all the Dropify object properties using __element.xxxx__. See how to use it.
 
 ```javascript
 var drEvent = $('.dropify-event').dropify();
@@ -137,7 +137,7 @@ drEvent.on('dropify.beforeClear', function(event, element){
 });
 ```
 
-* __dropify.afterClear:__  This event is called after the Dropify is clear. You can access to all the Dropify object properties using __element.xxxx__. See how use it.
+* __dropify.afterClear:__  This event is called after the Dropify is clear. You can access to all the Dropify object properties using __element.xxxx__. See how to use it.
 
 ```javascript
 var drEvent = $('.dropify-event').dropify();
