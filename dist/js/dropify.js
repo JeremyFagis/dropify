@@ -18,6 +18,11 @@
 }(this, function($) {
 var pluginName = "dropify";
 
+/**
+ * Dropify plugin
+ * @param {Object} element
+ * @param {Array} options
+ */
 function Dropify(element, options) {
     if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
         return;
@@ -63,6 +68,9 @@ function Dropify(element, options) {
     this.input.on('change', this.onChange);
 }
 
+/**
+ * On change event
+ */
 Dropify.prototype.onChange = function()
 {
     this.resetPreview();
@@ -70,6 +78,9 @@ Dropify.prototype.onChange = function()
     this.readUrl(this.element);
 };
 
+/**
+ * Create dom elements
+ */
 Dropify.prototype.createElements = function()
 {
     this.input.wrap($(this.settings.tpl.wrap));
@@ -107,6 +118,11 @@ Dropify.prototype.createElements = function()
     }
 };
 
+/**
+ * Read the file url using FileReader
+ *
+ * @param  {Object} input
+ */
 Dropify.prototype.readUrl = function(input)
 {
     if (input.files && input.files[0]) {
@@ -127,6 +143,11 @@ Dropify.prototype.readUrl = function(input)
     }
 };
 
+/**
+ * Set the preview and animate it
+ *
+ * @param {String} src
+ */
 Dropify.prototype.setPreview = function(src)
 {
     this.wrapper.removeClass('has-error').addClass('has-preview');
@@ -142,6 +163,9 @@ Dropify.prototype.setPreview = function(src)
     this.preview.fadeIn();
 };
 
+/**
+ * Reset the preview
+ */
 Dropify.prototype.resetPreview = function()
 {
     this.wrapper.removeClass('has-preview');
@@ -152,6 +176,13 @@ Dropify.prototype.resetPreview = function()
     this.preview.hide();
 };
 
+/**
+ * Get the filename
+ *
+ * @param  {String} src with path
+ *
+ * @return {String} clean filename
+ */
 Dropify.prototype.getFilename = function(src)
 {
     var filename = src.split('\\').pop();
@@ -162,6 +193,11 @@ Dropify.prototype.getFilename = function(src)
     return src != "" ? filename : '';
 };
 
+/**
+ * Set the filename in the object and in the dom
+ *
+ * @param {String} filename
+ */
 Dropify.prototype.setFilename = function(filename)
 {
     var filename = this.getFilename(filename);
@@ -169,13 +205,27 @@ Dropify.prototype.setFilename = function(filename)
     this.filenameWrapper.children('.dropify-filename-inner').html(filename);
 };
 
+/**
+ * Clear the element, events are available
+ */
 Dropify.prototype.clearElement = function()
 {
-    this.file = null;
-    this.input.val('');
-    this.resetPreview();
+    var eventBefore = $.Event("dropify.beforeClear");
+    this.input.trigger(eventBefore, [this]);
+
+    if (eventBefore.result !== false) {
+        this.file = null;
+        this.input.val('');
+        this.resetPreview();
+
+        var eventAfter = $.Event("dropify.afterClear");
+        this.input.trigger(eventAfter, [this]);
+    }
 };
 
+/**
+ * Set the wrapper height
+ */
 Dropify.prototype.setSize = function()
 {
     if (this.settings.height) {
@@ -183,6 +233,11 @@ Dropify.prototype.setSize = function()
     }
 };
 
+/**
+ * Test if it's touch screen
+ *
+ * @return {Boolean}
+ */
 Dropify.prototype.isTouchDevice = function()
 {
     return (('ontouchstart' in window)
@@ -190,11 +245,20 @@ Dropify.prototype.isTouchDevice = function()
          || (navigator.msMaxTouchPoints > 0));
 };
 
+/**
+ * Get the file type.
+ * @return {String}
+ */
 Dropify.prototype.getFileType = function()
 {
     return this.filename.split('.').pop().toLowerCase();
 };
 
+/**
+ * Test if the file is an image
+ *
+ * @return {Boolean}
+ */
 Dropify.prototype.isImage = function()
 {
     if (this.imgFileFormats.indexOf(this.getFileType()) != "-1") {
@@ -204,6 +268,9 @@ Dropify.prototype.isImage = function()
     return false;
 };
 
+/**
+ * Translate text if needed.
+ */
 Dropify.prototype.translate = function()
 {
     for (var name in this.settings.tpl) {
@@ -213,6 +280,11 @@ Dropify.prototype.translate = function()
     }
 };
 
+/**
+ * Check the limit filesize.
+ *
+ * @return {Boolean}
+ */
 Dropify.prototype.checkFileSize = function()
 {
     if (this.maxFileSizeToByte() === 0 || this.file.size <= this.maxFileSizeToByte()) {
@@ -222,6 +294,11 @@ Dropify.prototype.checkFileSize = function()
     return false;
 };
 
+/**
+ * Convert filesize to byte.
+ *
+ * @return {Int} value
+ */
 Dropify.prototype.maxFileSizeToByte = function()
 {
     var value = 0;
