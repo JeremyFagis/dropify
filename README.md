@@ -130,7 +130,7 @@ $('.dropify').dropify({
 * __dropify.beforeClear:__  This event is called when you click on the "remove" button, just before clearing the Dropify. You can access to all the Dropify object properties using __element.xxxx__. See how to use it.
 
 ```javascript
-var drEvent = $('.dropify-event').dropify();
+var drEvent = $('.dropify').dropify();
 
 drEvent.on('dropify.beforeClear', function(event, element){
     return confirm("Do you realy want to delete \"" + element.filename + "\" ?");
@@ -140,9 +140,9 @@ drEvent.on('dropify.beforeClear', function(event, element){
 * __dropify.afterClear:__  This event is called after the Dropify is clear. You can access to all the Dropify object properties using __element.xxxx__. See how to use it.
 
 ```javascript
-var drEvent = $('.dropify-event').dropify();
+var drEvent = $('.dropify').dropify();
 
-drEvent.on('dropify.afterClear', function(){
+drEvent.on('dropify.afterClear', function(event, element){
     alert('File deleted');
 });
 ```

@@ -102,7 +102,7 @@
                     return confirm("Do you realy want to delete \"" + element.filename + "\" ?");
                 });
 
-                drEvent.on('dropify.afterClear', function(){
+                drEvent.on('dropify.afterClear', function(event, element){
                     alert('File deleted');
                 });
             });
