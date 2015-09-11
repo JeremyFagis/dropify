@@ -87,10 +87,17 @@ $('.dropify').dropify();
 ```
 
 
-* __disableRemove:__  You can disable the remove button if you add the attr __data-disable-remove="true"__.
+* __showRemove:__  You can hide the remove button if you add the attr __data-show-remove="false"__. Default: true.
 
 ```html
-<input type="file" class="dropify" data-disable-remove="true" />
+<input type="file" class="dropify" data-show-remove="false" />
+```
+
+
+* __showLoader:__  You can hide the loader if you add the attr __data-show-loader="false"__. Default: true.
+
+```html
+<input type="file" class="dropify" data-show-loader="false" />
 ```
 
 
@@ -115,6 +122,7 @@ $('.dropify').dropify({
 $('.dropify').dropify({
     tpl: {
         wrap:        '<div class="dropify-wrapper"></div>',
+        loader:      '<div class="dropify-loader"></div>',
         message:     '<div class="dropify-message"><span class="file-icon" /> <p>{{ default }}</p></div>',
         preview:     '<div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message">{{ replace }}</p></div></div></div>',
         filename:    '<p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p>',

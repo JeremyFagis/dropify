@@ -302,6 +302,25 @@
       display: none; }
     .dropify-wrapper.touch-fallback:hover .dropify-preview .dropify-infos .dropify-infos-inner {
       margin-top: 0; }
+  .dropify-wrapper .dropify-loader {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: none;
+    z-index: 10; }
+    .dropify-wrapper .dropify-loader::after {
+      display: block;
+      position: relative;
+      width: 20px;
+      height: 20px;
+      -webkit-animation: rotate 0.6s linear infinite;
+              animation: rotate 0.6s linear infinite;
+      border-radius: 100%;
+      border-top: 1px solid #CCC;
+      border-bottom: 1px solid #777;
+      border-left: 1px solid #CCC;
+      border-right: 1px solid #777;
+      content: ''; }
 
 @-webkit-keyframes stripes {
   from {
@@ -316,3 +335,21 @@
 
   to {
     background-position: 60px 30px; } }
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotateZ(-360deg);
+            transform: rotateZ(-360deg); }
+
+  100% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg); } }
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotateZ(-360deg);
+            transform: rotateZ(-360deg); }
+
+  100% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg); } }

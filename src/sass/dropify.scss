@@ -13,6 +13,10 @@ $dropify-infos-color:      #FFF !default;
 $dropify-clear-color:      #FFF !default;
 $dropify-error-color:      #F34141 !default;
 $dropify-stripes:          #F6F6F6 !default;
+$dropify-loader-size:      20px !default;
+$dropify-loader-border:    1px !default;
+$dropify-loader-fill:      #CCC !default;
+$dropify-loader-trace:     #777 !default;
 $dropify-font-path:        "../fonts" !default;
 
 @import "dropify-font";
@@ -380,9 +384,40 @@ $dropify-font-path:        "../fonts" !default;
             }
         }
     }
+
+    .dropify-loader {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: none;
+        z-index: 10;
+
+        &::after {
+            display: block;
+            position: relative;
+            width: $dropify-loader-size;
+            height: $dropify-loader-size;
+            animation: rotate 0.6s linear infinite;
+            border-radius: 100%;
+            border-top: $dropify-loader-border solid $dropify-loader-fill;
+            border-bottom: $dropify-loader-border solid $dropify-loader-trace;
+            border-left: $dropify-loader-border solid $dropify-loader-fill;
+            border-right: $dropify-loader-border solid $dropify-loader-trace;
+            content: '';
+        }
+    }
 }
 
 @keyframes stripes {
   from { background-position: 0 0; }
   to   { background-position: 60px 30px; }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(-360deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
 }
