@@ -56,6 +56,10 @@
                     <label for="input-file-events">You can use events</label>
                     <input type="file" id="input-file-events" class="dropify-event" data-default-file="src/images/test-image-1.jpg" />
                     <br />
+                    <label for="input-file-to-destroy">You can destroy it</label>
+                    <button type="button" id="toggleDropify">Init/Destroy</button><br />
+                    <input type="file" id="input-file-to-destroy" class="dropify" data-default-file="src/images/test-image-1.jpg" />
+                    <br />
                     <h2>French one</h2>
                     <label for="input-file-french-1">"Et voilà"</label>
                     <input type="file" id="input-file-french-1" class="dropify-fr" data-default-file="" />
@@ -96,7 +100,7 @@
                 });
 
                 // Used events
-                var drEvent = $('.dropify').dropify();
+                var drEvent = $('#input-file-events').dropify();
 
                 drEvent.on('dropify.beforeClear', function(event, element){
                     return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
@@ -113,6 +117,18 @@
                 drEvent.on('dropify.error.maxHeight', function(event, element){
                     console.log('Image trop grande !');
                 });
+
+
+                var drDestroy = $('#input-file-to-destroy').dropify();
+                drDestroy = drDestroy.data('dropify')
+                $('#toggleDropify').on('click', function(e){
+                    e.preventDefault();
+                    if (drDestroy.isDropified()) {
+                        drDestroy.destroy();
+                    } else {
+                        drDestroy.init();
+                    }
+                })
             });
         </script>
     </body>

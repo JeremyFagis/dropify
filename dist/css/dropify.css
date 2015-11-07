@@ -10,8 +10,8 @@
 @charset "UTF-8";
 @font-face {
   font-family: 'dropify';
-  src: url('../fonts/dropify.eot');
-  src: url('../fonts/dropify.eot#iefix') format('embedded-opentype'), url('../fonts/dropify.woff') format('woff'), url('../fonts/dropify.ttf') format('truetype'), url('../fonts/dropify.svg#dropify') format('svg');
+  src: url("../fonts/dropify.eot");
+  src: url("../fonts/dropify.eot#iefix") format("embedded-opentype"), url("../fonts/dropify.woff") format("woff"), url("../fonts/dropify.ttf") format("truetype"), url("../fonts/dropify.svg#dropify") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -342,8 +342,8 @@
     text-align: left;
     visibility: hidden;
     opacity: 0;
-    -webkit-transition: visibility 0s linear 0.15s, opacity 0.15s linear;
-            transition: visibility 0s linear 0.15s, opacity 0.15s linear; }
+    -webkit-transition: visibility 0s linear 0.15s,opacity 0.15s linear;
+            transition: visibility 0s linear 0.15s,opacity 0.15s linear; }
     .dropify-wrapper .dropify-errors-container ul {
       padding: 10px 20px;
       margin: 0;
@@ -373,14 +373,12 @@
 @-webkit-keyframes stripes {
   from {
     background-position: 0 0; }
-
   to {
     background-position: 60px 30px; } }
 
 @keyframes stripes {
   from {
     background-position: 0 0; }
-
   to {
     background-position: 60px 30px; } }
 
@@ -388,7 +386,6 @@
   0% {
     -webkit-transform: rotateZ(-360deg);
             transform: rotateZ(-360deg); }
-
   100% {
     -webkit-transform: rotateZ(0deg);
             transform: rotateZ(0deg); } }
@@ -397,7 +394,6 @@
   0% {
     -webkit-transform: rotateZ(-360deg);
             transform: rotateZ(-360deg); }
-
   100% {
     -webkit-transform: rotateZ(0deg);
             transform: rotateZ(0deg); } }

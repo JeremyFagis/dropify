@@ -578,10 +578,26 @@ Dropify.prototype.hideLoader = function()
     }
 };
 
+Dropify.prototype.destroy = function()
+{
+    this.input.siblings().remove();
+    this.input.unwrap();
+};
+
+Dropify.prototype.init = function()
+{
+    this.createElements();
+};
+
+Dropify.prototype.isDropified = function()
+{
+    return this.input.parent().hasClass('dropify-wrapper');
+};
+
 $.fn[pluginName] = function(options) {
     this.each(function() {
-        if (!$.data(this, "plugin_" + pluginName)) {
-            $.data(this, "plugin_" + pluginName, new Dropify(this, options));
+        if (!$.data(this, pluginName)) {
+            $.data(this, pluginName, new Dropify(this, options));
         }
     });
 
