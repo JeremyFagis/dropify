@@ -98,6 +98,8 @@ function Dropify(element, options) {
     this.createElements();
     this.setContainerSize();
 
+    this.errorsEvent.errors = [];
+
     this.input.on('change', this.onChange);
 }
 
