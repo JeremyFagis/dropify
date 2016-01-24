@@ -13,7 +13,7 @@
   } else if (typeof exports === 'object') {
     module.exports = factory(require('jquery'));
   } else {
-    root.Dropify = factory(root.$);
+    root.Dropify = factory(root.jQuery);
   }
 }(this, function($) {
 var pluginName = "dropify";

@@ -25,7 +25,7 @@ var jsDir     = 'src/js/',
                     name: '$',
                     amd: 'jquery',
                     cjs: 'jquery',
-                    global: '$',
+                    global: 'jQuery',
                     param: '$'
                 }
             ];
