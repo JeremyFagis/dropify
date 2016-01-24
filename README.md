@@ -158,8 +158,7 @@ $('.dropify').dropify({
         'default': 'Drag and drop a file here or click',
         'replace': 'Drag and drop or click to replace',
         'remove':  'Remove',
-        'error':   'Sorry, this file is too large'
-
+        'error':   'Ooops, something wrong appended.'
     }
 }
 ```
@@ -227,7 +226,7 @@ drEvent.on('dropify.afterClear', function(event, element){
 var drEvent = $('.dropify').dropify();
 
 drEvent.on('dropify.errors', function(event, element){
-    alert('There is error!');
+    alert('Has Errors!');
 });
 ```
 
