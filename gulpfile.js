@@ -14,7 +14,7 @@ var jsDir     = 'src/js/',
         ' * <%= name %> v<%= version %> - <%= description %>',
         ' * <%= homepage %>',
         ' *',
-        ' * (c) 2015 - <%= author %>',
+        ' * (c) 2016 - <%= author %>',
         ' * =============================================================',
         ' */\n\n'
     ].join('\n'),
@@ -25,7 +25,7 @@ var jsDir     = 'src/js/',
                     name: '$',
                     amd: 'jquery',
                     cjs: 'jquery',
-                    global: '$',
+                    global: 'jQuery',
                     param: '$'
                 }
             ];
