@@ -3,7 +3,7 @@
  * dropify v0.2.0 - Override your input files with style.
  * https://github.com/JeremyFagis/dropify
  *
- * (c) 2015 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
+ * (c) 2016 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
  * =============================================================
  */
 
@@ -993,7 +993,6 @@ h1 {
     background-color: #444;
     left: 50%;
     -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
             transform: translateX(-50%);
     bottom: 0; }
 
@@ -1062,7 +1061,7 @@ p.help {
   border-radius: 4px;
   margin-left: 10px;
   -webkit-transition: background 0.1s linear;
-          transition: background 0.1s linear; }
+  transition: background 0.1s linear; }
   #toggleDropify:hover {
     background: #EEE; }
 
