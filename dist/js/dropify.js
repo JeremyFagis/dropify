@@ -3,17 +3,17 @@
  * dropify v0.2.0 - Override your input files with style.
  * https://github.com/JeremyFagis/dropify
  *
- * (c) 2015 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
+ * (c) 2016 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
  * =============================================================
  */
 
-(function(root, factory) {
+;(function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['jquery'], factory);
   } else if (typeof exports === 'object') {
     module.exports = factory(require('jquery'));
   } else {
-    root.Dropify = factory(root.$);
+    root.Dropify = factory(root.jQuery);
   }
 }(this, function($) {
 var pluginName = "dropify";
