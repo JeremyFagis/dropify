@@ -65,6 +65,23 @@ p.help {
     color: #999;
 }
 
+#toggleDropify {
+    font-size: 12px;
+    text-transform: uppercase;
+    background: #DDD;
+    color: #888;
+    font-weight: bold;
+    border: 0;
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-left: 10px;
+    transition: background 0.1s linear;
+
+    &:hover {
+        background: #EEE;
+    }
+}
+
 @media (max-width: 480px) {
     header#header {
         padding: 30px 15px;
