@@ -39,8 +39,10 @@ function Dropify(element, options) {
         showRemove: true,
         showLoader: true,
         showErrors: true,
+        errorTimeout: 3000,
         errorsPosition: 'overlay',
         allowedFormats: ['portrait', 'square', 'landscape'],
+		allowedFileExtensions: ['*'],
         messages: {
             'default': 'Drag and drop a file here or click',
             'replace': 'Drag and drop or click to replace',
@@ -53,7 +55,8 @@ function Dropify(element, options) {
             'maxWidth': 'The image width is too big ({{ value }}}px max).',
             'minHeight': 'The image height is too small ({{ value }}}px min).',
             'maxHeight': 'The image height is too big ({{ value }}px max).',
-            'imageFormat': 'The image format is not allowed ({{ value }} only).'
+            'imageFormat': 'The image format is not allowed ({{ value }} only).',
+            'fileExtension': 'The file is not allowed ({{ value }} only).'
         },
         tpl: {
             wrap:            '<div class="dropify-wrapper"></div>',
@@ -192,6 +195,8 @@ Dropify.prototype.readFile = function(input)
         this.errorsEvent.errors = [];
 
         this.checkFileSize();
+		
+		this.isFileExtensionAllowed();
 
         reader.onload = function(_file) {
             srcBase64 = _file.target.result;
@@ -235,7 +240,7 @@ Dropify.prototype.onFileReady = function(event, src)
             this.errorsContainer.addClass('visible');
 
             var errorsContainer = this.errorsContainer;
-            setTimeout(function(){ errorsContainer.removeClass('visible'); }, 1000);
+            setTimeout(function(){ errorsContainer.removeClass('visible'); }, this.settings.errorTimeout);
         }
 
         this.wrapper.addClass('has-error');
@@ -413,6 +418,23 @@ Dropify.prototype.isImage = function()
 };
 
 /**
+* Test if the file extension is allowed
+*
+* @return {Boolean}
+*/
+Dropify.prototype.isFileExtensionAllowed = function () {
+
+	if (this.settings.allowedFileExtensions.indexOf('*') != "-1") {
+		return true;
+	} else if (this.settings.allowedFileExtensions.indexOf(this.getFileType()) != "-1") {
+		return true;
+	}
+	this.pushError("fileExtension");
+
+	return false;
+}
+
+/**
  * Translate messages if needed.
  */
 Dropify.prototype.translateMessages = function()
@@ -562,7 +584,9 @@ Dropify.prototype.getError = function(errorKey)
         value = this.settings.maxHeight;
     } else if (errorKey === 'imageFormat') {
         value = this.settings.allowedFormats.join(' ');
-    }
+    } else if (errorKey === 'fileExtension') {
+		value = this.settings.allowedFileExtensions.join(', ');
+	}
 
     if (value !== '') {
         return error.replace('{{ value }}', value);
