@@ -70,17 +70,18 @@ function Dropify(element, options) {
         }
     };
 
-    this.element           = element;
-    this.input             = $(this.element);
-    this.wrapper           = null;
-    this.preview           = null;
-    this.filenameWrapper   = null;
-    this.settings          = $.extend(true, defaults, options, this.input.data());
-    this.imgFileExtensions = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
-    this.errorsEvent       = $.Event('dropify.errors');
-    this.isDisabled        = false;
-    this.isInit            = false;
-    this.file              = {
+    this.element            = element;
+    this.input              = $(this.element);
+    this.wrapper            = null;
+    this.preview            = null;
+    this.filenameWrapper    = null;
+    this.settings           = $.extend(true, defaults, options, this.input.data());
+    this.imgFileExtensions  = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
+    this.maxFileSizePreview = 5000000;
+    this.errorsEvent        = $.Event('dropify.errors');
+    this.isDisabled         = false;
+    this.isInit             = false;
+    this.file               = {
         object: null,
         name: null,
         size: null,
@@ -167,7 +168,7 @@ Dropify.prototype.createElements = function()
 
     if (defaultFile.trim() != '') {
         this.file.name = this.cleanFilename(defaultFile);
-        this.setPreview(defaultFile);
+        this.setPreview(this.isImage(), defaultFile);
     }
 };
 
@@ -188,31 +189,27 @@ Dropify.prototype.readFile = function(input)
 
         this.clearErrors();
         this.showLoader();
-
         this.setFileInformations(file);
-        reader.readAsDataURL(file);
-
         this.errorsEvent.errors = [];
-
         this.checkFileSize();
-		
 		this.isFileExtensionAllowed();
 
-        reader.onload = function(_file) {
-            srcBase64 = _file.target.result;
-            if (this.isImage()) {
+        if (this.isImage() && this.file.size < this.maxFileSizePreview) {
+            this.input.on('dropify.fileReady', this.onFileReady);
+            reader.readAsDataURL(file);
+            reader.onload = function(_file) {
+                srcBase64 = _file.target.result;
                 image.src = _file.target.result;
                 image.onload = function() {
                     _this.setFileDimensions(this.width, this.height);
                     _this.validateImage();
-                    _this.input.trigger(eventFileReady, [srcBase64]);
+                    _this.input.trigger(eventFileReady, [true, srcBase64]);
                 };
-            } else {
-                this.input.trigger(eventFileReady, [srcBase64]);
-            }
-        }.bind(this);
 
-        this.input.on('dropify.fileReady', this.onFileReady);
+            }.bind(this);
+        } else {
+            this.onFileReady(false);
+        }
     }
 };
 
@@ -222,12 +219,12 @@ Dropify.prototype.readFile = function(input)
  * @param  {Event} event
  * @param  {String} src
  */
-Dropify.prototype.onFileReady = function(event, src)
+Dropify.prototype.onFileReady = function(event, showImage, src)
 {
     this.input.off('dropify.fileReady', this.onFileReady);
 
     if (this.errorsEvent.errors.length === 0) {
-        this.setPreview(src, this.file.name);
+        this.setPreview(showImage, src);
     } else {
         this.input.trigger(this.errorsEvent, [this]);
         for (var i = this.errorsEvent.errors.length - 1; i >= 0; i--) {
@@ -281,7 +278,7 @@ Dropify.prototype.setFileDimensions = function(width, height)
  *
  * @param {String} src
  */
-Dropify.prototype.setPreview = function(src)
+Dropify.prototype.setPreview = function(showImage, src)
 {
     this.wrapper.removeClass('has-error').addClass('has-preview');
     this.filenameWrapper.children('.dropify-filename-inner').html(this.file.name);
@@ -289,9 +286,9 @@ Dropify.prototype.setPreview = function(src)
 
     this.hideLoader();
 
-    if (this.isImage() === true) {
+    if (showImage === true) {
         var imgTag = $('<img />').attr('src', src);
-        
+
         if (this.settings.height) {
             imgTag.css("max-height", this.settings.height);
         }
@@ -583,7 +580,7 @@ Dropify.prototype.getError = function(errorKey)
     } else if (errorKey === 'maxHeight') {
         value = this.settings.maxHeight;
     } else if (errorKey === 'imageFormat') {
-        value = this.settings.allowedFormats.join(' ');
+        value = this.settings.allowedFormats.join(', ');
     } else if (errorKey === 'fileExtension') {
 		value = this.settings.allowedFileExtensions.join(', ');
 	}
