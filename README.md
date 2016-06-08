@@ -47,6 +47,7 @@ Compile assets
 ## NPM Package
 
 [www.npmjs.com/package/dropify](https://www.npmjs.com/package/dropify)
+
     $ npm install dropify
 
 ## Bower Package
