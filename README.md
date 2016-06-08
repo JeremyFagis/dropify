@@ -150,6 +150,20 @@ $('.dropify').dropify();
 ```
 
 
+* __allowedFileExtensions:__  You can allow only some file extensions. If you add the attr __data-allowed-file-extensions="pdf png psd"__ only PDF, PNG and PSD files will be allowed. By default, everything is allowed. Default: ['*'].
+
+```html
+<input type="file" class="dropify" data-allowed-file-extensions="pdf png psd" />
+```
+
+
+* __maxFileSizePreview:__  Set the max filesize of the previewed document (if it's an image). If the file size is bigger than the option, it will be only the file icon and disabled the preview. You can use unit like K, M and G.
+
+```html
+<input type="file" class="dropify" data-max-file-size-preview="3M" />
+```
+
+
 * __messages:__  You can translate default messages. You juste have to add an options array when you init the plugin. This messages will be replaced in the __tpl__ option.
 
 ```javascript

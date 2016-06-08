@@ -1,6 +1,6 @@
 /*!
  * =============================================================
- * dropify v0.2.0 - Override your input files with style.
+ * dropify v0.2.1 - Override your input files with style.
  * https://github.com/JeremyFagis/dropify
  *
  * (c) 2016 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
@@ -41,8 +41,10 @@ function Dropify(element, options) {
         showErrors: true,
         errorTimeout: 3000,
         errorsPosition: 'overlay',
+        imgFileExtensions: ['png', 'jpg', 'jpeg', 'gif', 'bmp'],
+        maxFileSizePreview: "5M",
         allowedFormats: ['portrait', 'square', 'landscape'],
-		allowedFileExtensions: ['*'],
+        allowedFileExtensions: ['*'],
         messages: {
             'default': 'Drag and drop a file here or click',
             'replace': 'Drag and drop or click to replace',
@@ -76,8 +78,6 @@ function Dropify(element, options) {
     this.preview            = null;
     this.filenameWrapper    = null;
     this.settings           = $.extend(true, defaults, options, this.input.data());
-    this.imgFileExtensions  = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
-    this.maxFileSizePreview = 5000000;
     this.errorsEvent        = $.Event('dropify.errors');
     this.isDisabled         = false;
     this.isInit             = false;
@@ -92,6 +92,10 @@ function Dropify(element, options) {
 
     if (!Array.isArray(this.settings.allowedFormats)) {
         this.settings.allowedFormats = this.settings.allowedFormats.split(' ');
+    }
+
+    if (!Array.isArray(this.settings.allowedFileExtensions)) {
+        this.settings.allowedFileExtensions = this.settings.allowedFileExtensions.split(' ');
     }
 
     this.onChange     = this.onChange.bind(this);
@@ -166,7 +170,7 @@ Dropify.prototype.createElements = function()
 
     var defaultFile = this.settings.defaultFile || '';
 
-    if (defaultFile.trim() != '') {
+    if (defaultFile.trim() !== '') {
         this.file.name = this.cleanFilename(defaultFile);
         this.setPreview(this.isImage(), defaultFile);
     }
@@ -194,7 +198,7 @@ Dropify.prototype.readFile = function(input)
         this.checkFileSize();
 		this.isFileExtensionAllowed();
 
-        if (this.isImage() && this.file.size < this.maxFileSizePreview) {
+        if (this.isImage() && this.file.size < this.sizeToByte(this.settings.maxFileSizePreview)) {
             this.input.on('dropify.fileReady', this.onFileReady);
             reader.readAsDataURL(file);
             reader.onload = function(_file) {
@@ -217,14 +221,15 @@ Dropify.prototype.readFile = function(input)
  * On file ready to show
  *
  * @param  {Event} event
+ * @param  {Bool} previewable
  * @param  {String} src
  */
-Dropify.prototype.onFileReady = function(event, showImage, src)
+Dropify.prototype.onFileReady = function(event, previewable, src)
 {
     this.input.off('dropify.fileReady', this.onFileReady);
 
     if (this.errorsEvent.errors.length === 0) {
-        this.setPreview(showImage, src);
+        this.setPreview(previewable, src);
     } else {
         this.input.trigger(this.errorsEvent, [this]);
         for (var i = this.errorsEvent.errors.length - 1; i >= 0; i--) {
@@ -278,7 +283,7 @@ Dropify.prototype.setFileDimensions = function(width, height)
  *
  * @param {String} src
  */
-Dropify.prototype.setPreview = function(showImage, src)
+Dropify.prototype.setPreview = function(previewable, src)
 {
     this.wrapper.removeClass('has-error').addClass('has-preview');
     this.filenameWrapper.children('.dropify-filename-inner').html(this.file.name);
@@ -286,7 +291,7 @@ Dropify.prototype.setPreview = function(showImage, src)
 
     this.hideLoader();
 
-    if (showImage === true) {
+    if (previewable === true) {
         var imgTag = $('<img />').attr('src', src);
 
         if (this.settings.height) {
@@ -329,7 +334,7 @@ Dropify.prototype.cleanFilename = function(src)
         filename = src.split('/').pop();
     }
 
-    return src != "" ? filename : '';
+    return src !== "" ? filename : '';
 };
 
 /**
@@ -385,9 +390,9 @@ Dropify.prototype.setContainerSize = function()
  */
 Dropify.prototype.isTouchDevice = function()
 {
-    return (('ontouchstart' in window)
-         || (navigator.MaxTouchPoints > 0)
-         || (navigator.msMaxTouchPoints > 0));
+    return (('ontouchstart' in window) ||
+            (navigator.MaxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
 };
 
 /**
@@ -407,7 +412,7 @@ Dropify.prototype.getFileType = function()
  */
 Dropify.prototype.isImage = function()
 {
-    if (this.imgFileExtensions.indexOf(this.getFileType()) != "-1") {
+    if (this.settings.imgFileExtensions.indexOf(this.getFileType()) != "-1") {
         return true;
     }
 
@@ -421,15 +426,14 @@ Dropify.prototype.isImage = function()
 */
 Dropify.prototype.isFileExtensionAllowed = function () {
 
-	if (this.settings.allowedFileExtensions.indexOf('*') != "-1") {
-		return true;
-	} else if (this.settings.allowedFileExtensions.indexOf(this.getFileType()) != "-1") {
+	if (this.settings.allowedFileExtensions.indexOf('*') != "-1" || 
+        this.settings.allowedFileExtensions.indexOf(this.getFileType()) != "-1") {
 		return true;
 	}
 	this.pushError("fileExtension");
 
 	return false;
-}
+};
 
 /**
  * Translate messages if needed.
@@ -448,7 +452,7 @@ Dropify.prototype.translateMessages = function()
  */
 Dropify.prototype.checkFileSize = function()
 {
-    if (this.maxFileSizeToByte() !== 0 && this.file.size > this.maxFileSizeToByte()) {
+    if (this.sizeToByte(this.settings.maxFileSize) !== 0 && this.file.size > this.sizeToByte(this.settings.maxFileSize)) {
         this.pushError("fileSize");
     }
 };
@@ -458,22 +462,22 @@ Dropify.prototype.checkFileSize = function()
  *
  * @return {Int} value
  */
-Dropify.prototype.maxFileSizeToByte = function()
+Dropify.prototype.sizeToByte = function(size)
 {
     var value = 0;
 
-    if (this.settings.maxFileSize !== 0) {
-        var unit  = this.settings.maxFileSize.slice(-1).toUpperCase(),
+    if (size !== 0) {
+        var unit  = size.slice(-1).toUpperCase(),
             kb    = 1024,
             mb    = kb * 1024,
             gb    = mb * 1024;
 
         if (unit === 'K') {
-            value = parseFloat(this.settings.maxFileSize) * kb;
+            value = parseFloat(size) * kb;
         } else if (unit === 'M') {
-            value = parseFloat(this.settings.maxFileSize) * mb;
+            value = parseFloat(size) * mb;
         } else if (unit === 'G') {
-            value = parseFloat(this.settings.maxFileSize) * gb;
+            value = parseFloat(size) * gb;
         }
     }
 
