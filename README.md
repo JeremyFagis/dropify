@@ -100,14 +100,14 @@ $('.dropify').dropify();
 ```
 
 
-* __minHeight:__  Set the min height allowed. An error will be display if the width is smaller than the option.
+* __minHeight:__  Set the min height allowed. An error will be display if the height is smaller than the option.
 
 ```html
 <input type="file" class="dropify" data-min-height="400" />
 ```
 
 
-* __maxHeight:__  Set the max height allowed. An error will be display if the width is bigger than the option.
+* __maxHeight:__  Set the max height allowed. An error will be display if the height is bigger than the option.
 
 ```html
 <input type="file" class="dropify" data-max-height="1000" />
