@@ -4,6 +4,7 @@
   "description": "Override your input files with style",
   "keywords": [
     "upload",
+    "preview",
     "file",
     "drag",
     "drop",
@@ -23,7 +24,7 @@
     "jquery": ">=1.8"
   },
   "main": [
-    "src/js/dropify.js",
-    "src/sass/dropify.scss"
+    "dist/js/dropify.js",
+    "dist/css/dropify.css"
   ]
 }
