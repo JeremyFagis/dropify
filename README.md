@@ -57,7 +57,7 @@ Compile assets
 
 ## Usage
 
-You have to include __[dist/js/dropify.js](dist/js/dropify.js)__, __[dist/css/dropify.css](dist/css/dropify.css)__ and __dist/fonts/*__ to your project, then you juste have to init the jQuery plugin like that :
+You have to include __[dist/js/dropify.js](dist/js/dropify.js)__, __[dist/css/dropify.css](dist/css/dropify.css)__ and __dist/fonts/*__ to your project, then you just have to init the jQuery plugin like that :
 
 ```javascript
 $('.dropify').dropify();
@@ -170,7 +170,7 @@ $('.dropify').dropify();
 ```
 
 
-* __messages:__  You can translate default messages. You juste have to add an options array when you init the plugin. This messages will be replaced in the __tpl__ option.
+* __messages:__  You can translate default messages. You just have to add an options array when you init the plugin. This messages will be replaced in the __tpl__ option.
 
 ```javascript
 $('.dropify').dropify({
@@ -184,7 +184,7 @@ $('.dropify').dropify({
 ```
 
 
-* __error:__  You can translate default errors messages. You juste have to add an options array when you init the plugin. __{{ value }}__ text will be replaced by the option.
+* __error:__  You can translate default errors messages. You just have to add an options array when you init the plugin. __{{ value }}__ text will be replaced by the option.
 
 ```javascript
 $('.dropify').dropify({
@@ -200,7 +200,7 @@ $('.dropify').dropify({
 ```
 
 
-* __tpl:__  You can update default template. You juste have to add an options array when you init the plugin.
+* __tpl:__  You can update default template. You just have to add an options array when you init the plugin.
 
 ```javascript
 $('.dropify').dropify({
