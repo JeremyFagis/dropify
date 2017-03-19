@@ -241,14 +241,6 @@ $dropify-font-path:        "../fonts" !default;
                     line-height: 25px;
                     font-weight: bold;
 
-                    &.dropify-filename {
-                        span.file-icon {
-                            @extend .dropify-font;
-                            @extend .dropify-font-empty;
-                            margin-right: 2px;
-                        }
-                    }
-
                     &.dropify-infos-message {
                         margin-top: 15px;
                         padding-top: 15px;

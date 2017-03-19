@@ -1,9 +1,9 @@
 /*!
  * =============================================================
- * dropify v0.2.0 - Override your input files with style.
+ * dropify v0.2.1 - Override your input files with style.
  * https://github.com/JeremyFagis/dropify
  *
- * (c) 2016 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
+ * (c) 2017 - Jeremy FAGIS <jeremy@fagis.fr> (http://fagis.fr)
  * =============================================================
  */
 
@@ -15,7 +15,7 @@
   font-weight: normal;
   font-style: normal; }
 
-[class^="dropify-font-"]:before, [class*=" dropify-font-"]:before, .dropify-font:before, .dropify-wrapper .dropify-message span.file-icon:before, .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon:before {
+[class^="dropify-font-"]:before, [class*=" dropify-font-"]:before, .dropify-font:before, .dropify-wrapper .dropify-message span.file-icon:before {
   font-family: "dropify";
   font-style: normal;
   font-weight: normal;
@@ -208,8 +208,6 @@
           text-align: center;
           line-height: 25px;
           font-weight: bold; }
-          .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon {
-            margin-right: 2px; }
           .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-infos-message {
             margin-top: 15px;
             padding-top: 15px;

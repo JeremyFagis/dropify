@@ -48,10 +48,16 @@ Compile assets
 
 [www.npmjs.com/package/dropify](https://www.npmjs.com/package/dropify)
 
+    $ npm install dropify
+
+## Bower Package
+
+    $ bower install dropify
+
 
 ## Usage
 
-You have to include __[dist/js/dropify.js](dist/js/dropify.js)__, __[dist/css/dropify.css](dist/css/dropify.css)__ and __dist/fonts/*__ to your project, then you juste have to init the jQuery plugin like that :
+You have to include __[dist/js/dropify.js](dist/js/dropify.js)__, __[dist/css/dropify.css](dist/css/dropify.css)__ and __dist/fonts/*__ to your project, then you just have to init the jQuery plugin like that :
 
 ```javascript
 $('.dropify').dropify();
@@ -94,14 +100,14 @@ $('.dropify').dropify();
 ```
 
 
-* __minHeight:__  Set the min height allowed. An error will be display if the width is smaller than the option.
+* __minHeight:__  Set the min height allowed. An error will be display if the height is smaller than the option.
 
 ```html
 <input type="file" class="dropify" data-min-height="400" />
 ```
 
 
-* __maxHeight:__  Set the max height allowed. An error will be display if the width is bigger than the option.
+* __maxHeight:__  Set the max height allowed. An error will be display if the height is bigger than the option.
 
 ```html
 <input type="file" class="dropify" data-max-height="1000" />
@@ -150,7 +156,21 @@ $('.dropify').dropify();
 ```
 
 
-* __messages:__  You can translate default messages. You juste have to add an options array when you init the plugin. This messages will be replaced in the __tpl__ option.
+* __allowedFileExtensions:__  You can allow only some file extensions. If you add the attr __data-allowed-file-extensions="pdf png psd"__ only PDF, PNG and PSD files will be allowed. By default, everything is allowed. Default: ['*'].
+
+```html
+<input type="file" class="dropify" data-allowed-file-extensions="pdf png psd" />
+```
+
+
+* __maxFileSizePreview:__  Set the max filesize of the previewed document (if it's an image). If the file size is bigger than the option, it will be only the file icon and disabled the preview. You can use unit like K, M and G.
+
+```html
+<input type="file" class="dropify" data-max-file-size-preview="3M" />
+```
+
+
+* __messages:__  You can translate default messages. You just have to add an options array when you init the plugin. This messages will be replaced in the __tpl__ option.
 
 ```javascript
 $('.dropify').dropify({
@@ -158,13 +178,13 @@ $('.dropify').dropify({
         'default': 'Drag and drop a file here or click',
         'replace': 'Drag and drop or click to replace',
         'remove':  'Remove',
-        'error':   'Ooops, something wrong appended.'
+        'error':   'Ooops, something wrong happended.'
     }
-}
+});
 ```
 
 
-* __error:__  You can translate default errors messages. You juste have to add an options array when you init the plugin. __{{ value }}__ text will be replaced by the option.
+* __error:__  You can translate default errors messages. You just have to add an options array when you init the plugin. __{{ value }}__ text will be replaced by the option.
 
 ```javascript
 $('.dropify').dropify({
@@ -176,11 +196,11 @@ $('.dropify').dropify({
         'maxHeight': 'The image height is too big ({{ value }}px max).',
         'imageFormat': 'The image format is not allowed ({{ value }} only).'
     }
-}
+});
 ```
 
 
-* __tpl:__  You can update default template. You juste have to add an options array when you init the plugin.
+* __tpl:__  You can update default template. You just have to add an options array when you init the plugin.
 
 ```javascript
 $('.dropify').dropify({
@@ -194,7 +214,7 @@ $('.dropify').dropify({
         errorLine:       '<p class="dropify-error">{{ error }}</p>',
         errorsContainer: '<div class="dropify-errors-container"><ul></ul></div>'
     }
-}
+});
 ```
 
 
