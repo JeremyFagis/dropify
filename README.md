@@ -180,7 +180,7 @@ $('.dropify').dropify({
         'remove':  'Remove',
         'error':   'Ooops, something wrong happended.'
     }
-}
+});
 ```
 
 
@@ -196,7 +196,7 @@ $('.dropify').dropify({
         'maxHeight': 'The image height is too big ({{ value }}px max).',
         'imageFormat': 'The image format is not allowed ({{ value }} only).'
     }
-}
+});
 ```
 
 
@@ -214,7 +214,7 @@ $('.dropify').dropify({
         errorLine:       '<p class="dropify-error">{{ error }}</p>',
         errorsContainer: '<div class="dropify-errors-container"><ul></ul></div>'
     }
-}
+});
 ```
 
 
