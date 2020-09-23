@@ -1,3 +1,5 @@
+# ⚠️ Repository archived ⚠️
+
 ![Dropify](src/images/cover.jpg)
 
 Dropify
